@@ -47,8 +47,8 @@ function buildPageEl(page, index) {
   if (page.video) {
     el.classList.add('reader-page--video');
     el.innerHTML = `
-      <div class="reader-page-media"${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
-        <video class="reader-page-video" src="${encodeURI(page.video)}" muted ${page.advanceAfter == null ? 'loop' : ''} playsinline
+      <div class="reader-page-media"${page.videoFit === 'contain' ? ' data-fit="contain"' : ''}${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
+        <video class="reader-page-video" src="${encodeURI(page.video)}" ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
                preload="${index === 0 ? 'auto' : 'metadata'}" aria-label="${page.alt || `Page ${index + 1}`}"></video>
         <div class="reader-caption-frame">
           ${(page.captions || []).map((c, i) => `
@@ -305,9 +305,9 @@ export function unmountReader(el) {
 
 /** A page's sound effects belong to that page: they fade out when it is left, instead of playing on over the next one. */
 const pageSfx = new Set();
-function playPageSfx(src, volume) {
+function playPageSfx(src, volume, fadeInMs = 0) {
   pageSfx.add(src);
-  AudioManager.playSfx(src, volume);
+  AudioManager.playSfx(src, volume, null, fadeInMs);
 }
 function stopPageSfx() {
   pageSfx.forEach(src => AudioManager.stopSfx(src, null, 350));
@@ -373,6 +373,13 @@ function playPageVideo(idx) {
   const v = pageEls[idx]?.querySelector('video');
   if (!v || idx !== videoTarget) return;   // the reader has moved on
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // videoSoundFrom: the video's own audio stays off until it reaches that many seconds
+  const from = pages[idx].videoSoundFrom;
+  if (from != null && !v._soundGate) {
+    v._soundGate = true;
+    v.addEventListener('timeupdate', () => { v.muted = v.currentTime < from; });
+  }
+  if (from != null) v.muted = v.currentTime < from;
   v.play().catch(() => { /* autoplay blocked: first frame stays visible */ });
 }
 
@@ -651,6 +658,20 @@ function runPageAudio(idx) {
       }, wait * 1000);
     },
   });
+  // A page with no narration turns itself when its video ends (after the `advanceAfter` pause)
+  if (!page.narration && page.video && page.advanceAfter != null) {
+    const v = pageEls[idx]?.querySelector('video');
+    if (v) {
+      const onEnded = () => {
+        v.removeEventListener('ended', onEnded);
+        if (idx !== currentIndex) return;
+        advanceTimer = setTimeout(() => {
+          if (!holdPage && currentIndex === idx && readerEl?.classList.contains('active')) goTo(idx + 1, 'next', readerEl);
+        }, page.advanceAfter * 1000);
+      };
+      v.addEventListener('ended', onEnded);
+    }
+  }
   if (page.narrationDelay && page.narration) {
     playPageVideo(idx);
     (pageEls[idx]._capTimers ||= []).push(setTimeout(startNarration, page.narrationDelay * 1000));
@@ -661,8 +682,9 @@ function runPageAudio(idx) {
   // 'enter' sounds play when the page opens; with `at` they wait that many seconds first (cleared if the page is left)
   (page.sfx || []).filter(s => s.on === 'enter' && s.clip == null).forEach(s => {
     const src = encodeURI(s.src);
-    if (!s.at) { playPageSfx(src, s.volume ?? 1); return; }
-    (pageEls[idx]._capTimers ||= []).push(setTimeout(() => playPageSfx(src, s.volume ?? 1), s.at * 1000));
+    if (s.stopAt != null) (pageEls[idx]._capTimers ||= []).push(setTimeout(() => AudioManager.stopSfx(src, null, s.fadeMs ?? 600), s.stopAt * 1000));   // cut off this many seconds after the page opens
+    if (!s.at) { playPageSfx(src, s.volume ?? 1, s.fadeInMs); return; }
+    (pageEls[idx]._capTimers ||= []).push(setTimeout(() => playPageSfx(src, s.volume ?? 1, s.fadeInMs), s.at * 1000));
   });
 }
 

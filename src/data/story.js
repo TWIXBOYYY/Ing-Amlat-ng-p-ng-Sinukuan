@@ -12,6 +12,7 @@
  *  id          {string}       Unique slug, e.g. "page-06"
  *  image       {string}       Path from /public root, e.g. "/assets/comic/page-06.webp"
  *  videoAspect {number}       width / height of the video file (default 1920/1165); sets how it is cropped/fitted
+ *  videoFit    {string}       'contain' shows the whole frame instead of cropping it to fill a wide screen (default: fill)
  *  videoFocusY {number}       0..1, which part of a tall video stays in view on wide screens (0 top, 1 bottom, default .5)
  *  video       {string}       Optional motion video (MP4) shown instead of the image + layers;
  *                             it loops muted and is kept clear of the on-screen buttons
@@ -75,6 +76,8 @@
  * @property {PageLayer[]}  [layers]
  * @property {Clip|Clip[]} [narration]
  * @property {number}       [advanceAfter]
+ * @property {boolean}      [videoSound]  leave the video's own audio on (default: muted)
+ * @property {number}       [videoSoundFrom]  with videoSound: keep the video's audio off until this second
  * @property {number}       [videoSeconds]  play only this many seconds of the video, then turn the page
  * @property {Caption[]}    [captions]
  * @property {string}       [music]
@@ -398,28 +401,67 @@ export const pages = [
   },
   {
     id: 'page-11',
-    image: '/assets/comic/page-11.webp',
-    alt: 'Page 11 — art coming soon.',
+    videoFit: 'contain',   // the whole frame, not cropped: the artwork has panels at the very edges
+    video: '/assets/comic/s3p4/S3_P4 w_ audio.mp4',   // S3 page 4 (17.5s, 4200x2548, 23 MB); muted like every page video
+    alt: 'Season 3, page 4 — motion graphic.',
+    music:    '/assets/audio/music/theme-mystery.mp3',
+    ambience: null,
+    // The bamboo knock (~2.2s) repeats 4 times back to back
+    sfx: Array.from({ length: 4 }, (_, n) => ({ src: '/assets/audio/sfx/s3p4/Bamboo hitting.mp3', on: 'enter', at: n * 2.2 || undefined })),
+    narration: [
+      { src: '/assets/narration/s3p4/S3-P4-NARRATOR-001.wav' },
+    ],
+    advanceAfter: 1.5,
   },
   {
     id: 'page-12',
     image: '/assets/comic/page-12.webp',
-    alt: 'Page 12 — art coming soon.',
+    alt: 'Page 12 — art coming soon.',   // S3 page 5: not added yet
   },
   {
     id: 'page-13',
-    image: '/assets/comic/page-13.webp',
-    alt: 'Page 13 — art coming soon.',
+    video: '/assets/comic/s3p6/S3 P6 Motion.mp4',   // S3 page 6 (25s)
+    alt: 'Season 3, page 6 — motion graphic.',
+    music:    '/assets/audio/music/theme-mystery.mp3',
+    ambience: null,
+    videoSound: true,   // this video's own audio plays...
+    videoSoundFrom: 10, // ...but only from 0:10 of the video
+    sfx: [{ src: '/assets/audio/sfx/s3p6/Wind Blowing Through Grass Sound Effect.mp3', on: 'enter', volume: 0.5 }],
+    narration: [
+      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-001.wav' },
+      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-002.wav', maxSeconds: 4 },   // cut off at 0:04
+    ],
+    advanceAfter: 1.5,
+    videoSeconds: 25,   // the page turns as the whole 25s video ends, not when the voice does
   },
   {
     id: 'page-14',
-    image: '/assets/comic/page-14.webp',
-    alt: 'Page 14 — art coming soon.',
+    video: '/assets/comic/s3p7/S3p7 Motion.mp4',   // S3 page 7 (35s)
+    alt: 'Season 3, page 7 — motion graphic.',
+    music:    '/assets/audio/music/theme-mystery.mp3',
+    ambience: null,
+    // night until 0:20 (fades out), then dawn fades in
+    sfx: [
+      { src: '/assets/audio/sfx/s3p7/Night _ Midnight Sound Effect.mp3', on: 'enter', stopAt: 20, fadeMs: 1500 },
+      { src: '/assets/audio/sfx/s3p7/Dawn _ Morning Sound Effect.mp3', on: 'enter', at: 20, fadeInMs: 2500 },
+    ],
+    narration: [
+      { src: '/assets/narration/s3p7/S3-P7-NARRATOR-001.1.wav', maxSeconds: 19 },   // cut off (fading out) at 0:19
+      { src: '/assets/narration/s3p7/S3-P7-NARRATOR-001.2.wav', fadeInMs: 2000 },   // eases in
+    ],
+    advanceAfter: 1.5,
+    videoSeconds: 35,   // the page turns as the whole 35s video ends, not when the voice does
   },
   {
     id: 'page-15',
-    image: '/assets/comic/page-15.webp',
-    alt: 'Page 15 — art coming soon.',
+    video: '/assets/comic/s3p8/S3 P8 Motion.mp4',   // S3 page 8 (25s)
+    alt: 'Season 3, page 8 — motion graphic.',
+    music:    '/assets/audio/music/theme-mystery.mp3',
+    ambience: null,
+    narration: [
+      { src: '/assets/narration/s3p8/S3-P8-NARRATOR-001.wav' },
+    ],
+    advanceAfter: 1.5,
   },
   {
     id: 'page-16',

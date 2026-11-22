@@ -56,6 +56,11 @@
   --fit-w: max(100cqw, calc(100cqh * var(--video-ar)));   /* cover */
 }
 
+/* videoFit: 'contain' shows the whole frame (black bars at the sides of a wide screen) instead of cropping it to fill */
+.reader-page-media[data-fit="contain"] {
+  --fit-w: min(100cqw, calc(100cqh * var(--video-ar)));
+}
+
 .reader-caption-frame {
   position: absolute;
   left: 50%;

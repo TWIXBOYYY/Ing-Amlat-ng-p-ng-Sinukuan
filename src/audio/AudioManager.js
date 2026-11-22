@@ -194,7 +194,9 @@ export const AudioManager = {
         return;
       }
       _narration = howls[i];
-      _narration.volume(eff('narration'));
+      const fadeIn = list[i].fadeInMs || 0;   // this clip eases in from silence
+      _narration.volume(fadeIn ? 0 : eff('narration'));
+      if (fadeIn) _narration.fade(0, eff('narration'), fadeIn);
       if (unlocked) _narration.play();   // otherwise unlock() starts it
     }
     playAt(0);
@@ -211,7 +213,7 @@ export const AudioManager = {
    * Fire-and-forget SFX. `volume` (0..1) scales it under the sound-effects slider.
    * `part` ({ start, length } in seconds) plays just that slice, to skip silence at the start of a file.
    */
-  playSfx(src, volume = 1, part = null) {
+  playSfx(src, volume = 1, part = null, fadeInMs = 0) {
     if (!unlocked || !src) return;
     const key = part ? `${src}#${part.start}-${part.length}` : src;
     let h = _sfxCache.get(key);   // one Howl per file (and slice), so a repeated sound starts instantly
@@ -220,8 +222,10 @@ export const AudioManager = {
       _sfxCache.set(key, h);
     }
     h._plays = (h._plays || 0) + 1;
-    h.volume(eff('sfx') * volume);
+    const vol = eff('sfx') * volume;
+    h.volume(fadeInMs ? 0 : vol);
     h.play();
+    if (fadeInMs) h.fade(0, vol, fadeInMs);
   },
 
   /** Cut a sound short (same file and slice as playSfx); with `fadeMs` it fades out first. */
