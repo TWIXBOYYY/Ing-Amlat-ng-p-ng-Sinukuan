@@ -9,10 +9,17 @@ const DAY_BG   = '/assets/ui/MT.ALAYA_DAY.webp';
 const NIGHT_BG = '/assets/ui/MT.ALAYA_DAY__NIGHT.webp';
 
 /** The sun + LOADING... + progress bar over a parallax mountain. Day for the start, night for the minigame. */
-export function buildLoadingScreen({ bg, className, screen }) {
+const FOREWORD = [
+  'This story is rooted in generations of oral tradition, passed down through the family of Ingkung Eliung (Cornelio Toledano Manalóto, Sr.). The creation myth was inherited from his father, Apung Magnu (Magno Manalóto), and further enriched by stories shared by his wife, Apung Nená (Elena Lim Co Lioc Tayag), and his sisters—Apung Kading, Apung Bidang, Apung Tilang, and Apung Salud.',
+  'Growing up in the foothills of Bunduk Aláya, in the quiet town of Magálang, these stories were part of everyday life. Through this interactive comic, we hope to preserve and share a piece of this family’s heritage, allowing these stories to live on and reach generations beyond those who first told them.',
+];
+
+export function buildLoadingScreen({ bg, className, screen, foreword = false }) {
   const el = document.createElement('div');
   el.className = `screen screen-loading ${className}`.trim();
   el.dataset.screen = screen;
+
+  if (foreword) el.classList.add('screen-foreword');
 
   el.innerHTML = `
     <p class="loading-label" role="status" aria-live="polite" aria-atomic="true">LOADING...</p>
@@ -20,6 +27,8 @@ export function buildLoadingScreen({ bg, className, screen }) {
       <div class="loading-orb-glow"></div>
       <img src="/assets/ui/SUN (for loading).png" class="loading-orb-img" alt="" draggable="false"/>
     </div>
+    ${foreword ? `<div class="loading-foreword">${FOREWORD.map(p => `<p>${p}</p>`).join('')}</div>
+    <button type="button" class="loading-continue" aria-hidden="true" tabindex="-1">Continue</button>` : ''}
     <div class="loading-progress-bar" role="progressbar" aria-label="Loading progress"
          aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
       <div class="loading-progress-fill"></div>
@@ -31,7 +40,7 @@ export function buildLoadingScreen({ bg, className, screen }) {
 }
 
 export function createLoadingScreen() {
-  const el = buildLoadingScreen({ bg: DAY_BG, className: '', screen: '#loading' });
+  const el = buildLoadingScreen({ bg: DAY_BG, className: '', screen: '#loading', foreword: true });
   // The home screen's layers load while the loading screen plays
   ['bg', 'clouds', 'ayala', 'ground'].forEach(n => preloadImage(`/assets/ui/layer-${n}.webp`));
   return el;
@@ -55,10 +64,10 @@ export function mountLoading(el, { duration = 1.6, onDone = () => navigate('#hom
   const orbWrap = el.querySelector('.loading-orb-wrap');
 
   gsap.set(label,   { opacity: 0, y: 10 });
-  gsap.set(orbWrap, { opacity: 0, scale: 0.78 });
+  if (orbWrap) gsap.set(orbWrap, { opacity: 0, scale: 0.78 });
 
   gsap.to(label,   { opacity: 1, y: 0, duration: 0.7,  ease: 'power3.out', delay: 0.1 });
-  gsap.to(orbWrap, { opacity: 1, scale: 1, duration: 1.1, ease: 'back.out(1.5)', delay: 0.2 });
+  if (orbWrap) gsap.to(orbWrap, { opacity: 1, scale: 1, duration: 1.1, ease: 'back.out(1.5)', delay: 0.2 });
 
   setTimeout(() => bar.classList.add('visible'), 400);
 
@@ -108,20 +117,35 @@ function finish(el, onDone, fadeOut, waitForClick = false) {
     if (!waitForClick) { leave(); return; }
     const label = el.querySelector('.loading-label');
     const orb   = el.querySelector('.loading-orb-wrap');
-    label.textContent = 'CLICK TO CONTINUE';
-    label.classList.add('is-ready');
+    const btn   = el.querySelector('.loading-continue');   // the foreword screen has a Continue button
+    if (btn) {
+      btn.classList.add('is-ready');
+      btn.removeAttribute('aria-hidden');
+      btn.removeAttribute('tabindex');
+      btn.focus({ preventScroll: true });
+    } else {
+      label.textContent = 'CLICK TO CONTINUE';
+      label.classList.add('is-ready');
+    }
     const go = () => {
       el.removeEventListener('pointerdown', go);
       document.removeEventListener('keydown', go);
+      btn?.removeEventListener('click', go);
       playClickSound();
       // The text stays gold while it fades with the sun. The mountain stays too, and a sky tone sits behind the
       // hand-off to the home screen, so it never dips to black.
       const app = document.getElementById('app');
       if (app) { app.style.background = '#a9e2ec'; setTimeout(() => { app.style.background = ''; }, 2000); }
-      gsap.to([label, orb], { opacity: 0, duration: 0.4, ease: 'power1.in', onComplete: onDone });
+      // the mountain stays while the text, sun and button fade, so the hand-off to home never dips to black
+      gsap.to([label, orb, ...el.querySelectorAll('.loading-foreword, .loading-continue')], { opacity: 0, duration: 0.5, ease: 'power1.in', onComplete: onDone });
     };
-    el.addEventListener('pointerdown', go);
-    document.addEventListener('keydown', go);
+    if (btn) {
+      btn.addEventListener('click', go);   // only the button moves on
+      document.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') go(); }, { once: true });
+    } else {
+      el.addEventListener('pointerdown', go);
+      document.addEventListener('keydown', go);
+    }
     el._cancelWait = go;
   }, 350);
 }

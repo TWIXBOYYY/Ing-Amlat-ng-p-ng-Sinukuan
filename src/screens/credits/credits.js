@@ -23,14 +23,13 @@ const CREDITS_DATA = [
       { name: 'Jedi Directo',      role: 'Research Adviser'      },
       { name: 'Owen Tarog',         role: 'Web Developer'         },
       { name: 'Brian Ragaza',      role: 'Technical Adviser'     },
-      { name: 'Mike Pangilinan',   role: 'Cultural Consultant'   },
+      { name: 'Mike Pangilinan',   role: 'Cultural Expert'       },
     ],
   },
   {
     section: 'Audio',
     entries: [
       { name: 'Julian Rey Reyes', role: 'Apùng Sinùkuan · Voice Actor & Narration'  },
-      { name: 'Name 4', role: 'Apùng Panàbang · Voice Actor & Narration'  },
     ],
   },
 ];

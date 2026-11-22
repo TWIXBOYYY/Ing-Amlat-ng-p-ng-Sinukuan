@@ -11,7 +11,15 @@ const CHANNELS = [
 const ICON_ON  = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
 const ICON_OFF = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
 
-const BACK_ICON = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>`;
+// Lucide "expand" / "shrink" icons
+const ICON_EXPAND = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 15 6 6"/><path d="m15 9 6-6"/><path d="M21 16v5h-5"/><path d="M21 8V3h-5"/><path d="M3 16v5h5"/><path d="m3 21 6-6"/><path d="M3 8V3h5"/><path d="M9 9 3 3"/></svg>`;
+const ICON_SHRINK = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 15 6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 19.8V15m0 0H4.2M9 15l-6 6"/><path d="M15 4.2V9m0 0h4.8M15 9l6-6"/><path d="M9 4.2V9m0 0H4.2M9 9 3 3"/></svg>`;
+
+const fsRoot = document.documentElement;
+const canFullscreen = !!(fsRoot.requestFullscreen || fsRoot.webkitRequestFullscreen);   // iPhone Safari has none
+const isFullscreen = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+
+const BACK_ICON =`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>`;
 
 const ORNAMENT_L = `
 <svg class="settings-ornament" viewBox="0 0 88 44" fill="none" aria-hidden="true">
@@ -87,6 +95,7 @@ export function createSettingsOverlay() {
       <div class="settings-language" role="group" aria-label="Story language">
         <span class="settings-row-label">Language</span>
         ${LANGUAGES.map(l => `<button type="button" class="settings-lang-btn${l.code === getLanguage() ? ' active' : ''}" data-lang="${l.code}" aria-pressed="${l.code === getLanguage()}">${l.label}</button>`).join('')}
+        ${canFullscreen ? `<button type="button" class="settings-mute-btn settings-fs-btn" aria-label="Enter fullscreen" title="Fullscreen" aria-pressed="false">${ICON_EXPAND}</button>` : ''}
       </div>
     </div>`;
 
@@ -108,6 +117,23 @@ export function createSettingsOverlay() {
       });
     });
   });
+
+  // Fullscreen: like YouTube's button, it enters and leaves fullscreen (and follows F11 / Esc)
+  const fsBtn = _overlay.querySelector('.settings-fs-btn');
+  if (fsBtn) {
+    const sync = () => {
+      const on = isFullscreen();
+      fsBtn.innerHTML = on ? ICON_SHRINK : ICON_EXPAND;
+      fsBtn.setAttribute('aria-pressed', String(on));
+      fsBtn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
+    };
+    fsBtn.addEventListener('click', () => {
+      if (isFullscreen()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else (fsRoot.requestFullscreen || fsRoot.webkitRequestFullscreen).call(fsRoot);
+    });
+    document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('webkitfullscreenchange', sync);
+  }
 
   // Wire sliders and mute buttons
   _overlay.querySelectorAll('.settings-row').forEach(row => {

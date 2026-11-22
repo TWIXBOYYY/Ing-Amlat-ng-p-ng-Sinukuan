@@ -28,6 +28,16 @@
   z-index: 2;
 }
 
+/* The glow behind a picture that does not fill the screen (bars on the sides or above and below) */
+.reader-page-ambient {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  filter: blur(28px) saturate(1.15) brightness(0.8);
+  pointer-events: none;
+}
+
 /* Video page: the motion graphic fills the whole screen (cropped a little to fit).
    On portrait screens it is shown whole between the buttons instead (see the portrait block). */
 .reader-page-media {
@@ -461,4 +471,16 @@ span.reader-hud-btn-img img {
 @keyframes reader-loading-pulse {
   from { opacity: 0.45; }
   to   { opacity: 1; }
+}
+
+/* iPad / small laptop shapes (4:3 to 16:10): show the whole picture, with bars above and below,
+   instead of cropping the sides off (the cropped bird, the captions pushed off the edge) */
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 7/4) {
+  .reader-page-media { --fit-w: min(100cqw, calc(100cqh * var(--video-ar))); }
+}
+
+/* Landscape phones (short and wide): also show the whole picture, with bars at the sides, so panels at the
+   top and bottom edges are not cropped off */
+@media (min-aspect-ratio: 1/1) and (max-height: 600px) {
+  .reader-page-media { --fit-w: min(100cqw, calc(100cqh * var(--video-ar))); }
 }

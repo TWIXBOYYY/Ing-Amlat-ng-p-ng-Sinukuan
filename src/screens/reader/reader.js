@@ -47,6 +47,7 @@ function buildPageEl(page, index) {
   if (page.video) {
     el.classList.add('reader-page--video');
     el.innerHTML = `
+      <canvas class="reader-page-ambient" width="64" height="36" aria-hidden="true"></canvas>
       <div class="reader-page-media"${page.videoFit === 'contain' ? ' data-fit="contain"' : ''}${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
         <video class="reader-page-video" src="${encodeURI(page.video)}" ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
                preload="${index === 0 ? 'auto' : 'metadata'}" aria-label="${page.alt || `Page ${index + 1}`}"></video>
@@ -163,8 +164,25 @@ let videoTarget = -1;
 let holdPage = false;   // autoplay switched off for the current page; cleared whenever the page changes
 
 /** @param {HTMLElement} el */
+/** The bars beside or above a picture that does not fill the screen glow with the picture's own colours
+ *  (a tiny copy of the current frame, blurred), instead of showing flat black. */
+let ambientTimer = null;
+function startAmbient() {
+  clearInterval(ambientTimer);
+  const draw = () => {
+    const pe = pageEls[currentIndex];
+    const cv = pe?.querySelector('.reader-page-ambient');
+    const v = pe?.querySelector('video');
+    if (!cv || !v || v.readyState < 2) return;
+    try { cv.getContext('2d').drawImage(v, 0, 0, cv.width, cv.height); } catch { /* frame not ready */ }
+  };
+  draw();
+  ambientTimer = setInterval(draw, 150);
+}
+
 export function mountReader(el) {
   readerEl = el;
+  startAmbient();
   const stage    = el.querySelector('.reader-stage');
   const hudTop   = el.querySelector('#reader-hud-top');
   const prevBtn  = el.querySelector('#reader-prev-btn');
@@ -282,6 +300,7 @@ export function mountReader(el) {
 
 /** @param {HTMLElement} el */
 export function unmountReader(el) {
+  clearInterval(ambientTimer);
   pageEls.forEach(pe => pe.querySelector('video')?.pause());
   resetCaptions();
   clearTimeout(advanceTimer);

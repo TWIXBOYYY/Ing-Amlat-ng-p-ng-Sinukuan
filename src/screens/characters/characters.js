@@ -7,13 +7,13 @@ const PAGE_TURN_SFX = encodeURI('/assets/audio/sfx/ui/Turn a page.mp3');
 
 const CHARACTERS = [
   {
-    id: 'apung-punsalan',
-    name: 'Ápûng Punsalán',
-    aka: '(Ápûng Maliari / Búlan)',
-    description: 'Also known as Búlan when he came to be a red fiery Phoenix and Ápûng Maliari as they turned into giants, is the ruler of heavens during the night.',
-    layout: 'phoenix-left',
+    id: 'apung-mangacha',
+    name: 'Ápung Mánggácha',
+    subtitle: 'Spirit of the Weaver',
+    description: 'The giant spider who weaves the Siklúban, a dome which holds the sky and water.',
+    layout: 'mangacha',
     artLeft: null,
-    artRight: '/assets/characters ui/Bulan/Punsalan.webp',
+    artRight: '/assets/characters ui/Apung Mangacha/Manggacha.webp',
   },
   {
     id: 'indung-tibuan',
@@ -34,15 +34,6 @@ const CHARACTERS = [
     artRight: '/assets/characters ui/Apung Batala/Batala.png',
   },
   {
-    id: 'apung-mangacha',
-    name: 'Ápung Mánggácha',
-    subtitle: 'Spirit of the Weaver',
-    description: 'The giant spider who weaves the Siklúban, a dome which holds the sky and water.',
-    layout: 'mangacha',
-    artLeft: null,
-    artRight: '/assets/characters ui/Apung Mangacha/Manggacha.webp',
-  },
-  {
     id: 'apung-sinukuan',
     name: 'Ápûng Sínukuan',
     aka: '(Ápûng Sukû / Aldó)',
@@ -50,6 +41,15 @@ const CHARACTERS = [
     layout: 'phoenix-right',
     artLeft: null,
     artRight: '/assets/characters ui/Apung Sinukuan/Suku.webp',
+  },
+  {
+    id: 'apung-punsalan',
+    name: 'Ápûng Punsalán',
+    aka: '(Ápûng Maliari / Búlan)',
+    description: 'Also known as Búlan when he came to be a red fiery Phoenix and Ápûng Maliari as they turned into giants, is the ruler of heavens during the night.',
+    layout: 'phoenix-left',
+    artLeft: null,
+    artRight: '/assets/characters ui/Bulan/Punsalan.webp',
   },
 ];
 

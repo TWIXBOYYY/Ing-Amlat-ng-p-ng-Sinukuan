@@ -305,6 +305,22 @@ export const pages = [
       { src: '/assets/comic/S2P1/English/ENG_BUT FOUND NOTHING.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_BUT FOUND NOTHING.webp' },          alt: 'But found nothing...',                                            at: { x: 49.5, y: 80 }, clip: 1, voiceAt: 6.1, fallbackAt: 20.9 },
       { src: '/assets/comic/S2P1/English/ENG_UNTIL.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_UNTIL.webp' },                      alt: 'Until...',                                                        at: { x: 58.5, y: 20 }, clip: 1, voiceAt: 9.5, fallbackAt: 24.3,   // the last word of narration clip 2 (its voice is ~10.1-10.7s in the file, 9.6-10.2s after the clip starts)
         replaces: [0, 1, 2, 3, 4] },   // every earlier box clears away as "Until" appears
+      // After "Until": the bottom-centre slot of the middle panel, then the right panel. Timings are a first guess
+      // (the voice of narration clip 3, then clip 4).
+      { src: '/assets/comic/S2P1/English/ENG_HE SPOTTED SOMETHING.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_HE SPOTTED SOMETHING.webp' },
+        alt: 'He spotted something...', at: { x: 54, y: 79 }, clip: 2, voiceAt: 0.5, fallbackAt: 26 },
+      { src: '/assets/comic/S2P1/English/ENG_A PIECE OF FISH MEAT.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_A PIECE OF MEAT.webp' },
+        alt: "A piece of fish meat glistened in between Indung Tibuan's mouth!", at: { x: 54, y: 73 }, scale: 0.8, clip: 2, voiceAt: 2.3, fallbackAt: 30,
+        replaces: [6] },   // takes the place of "He spotted something"
+      // The fourth voice clip fills the right panel's four slots: 0:00, 0:04, 0:09 and 0:12 into the clip
+      { src: '/assets/comic/S2P1/English/ENG_WITH NO HESITATION.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_WITH NO HESISTATION.webp' },
+        alt: 'With no hesitation, he flew down...', at: { x: 84.1, y: 6 }, clip: 3, voiceAt: 1.1, fallbackAt: 32 },
+      { src: '/assets/comic/S2P1/English/ENG_DRIVEN BY HUNGER.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_DRIVEN BY HUNGER.webp' },
+        alt: 'Driven by hunger, he took a small peck...', at: { x: 87.7, y: 22 }, clip: 3, voiceAt: 4, fallbackAt: 36 },
+      { src: '/assets/comic/S2P1/English/ENG_THEN A BIG ONE.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_THEN A BIG ONE.webp' },
+        alt: 'Then a big one...', at: { x: 92.3, y: 58.6 }, clip: 3, voiceAt: 9, fallbackAt: 41 },
+      { src: '/assets/comic/S2P1/English/ENG_THEN AN EVEN BIGGER ONE.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_THEN AN EVEN BIGGER ONE.webp' },
+        alt: 'Then an even bigger one...', at: { x: 86.3, y: 88.4 }, clip: 3, voiceAt: 12, fallbackAt: 44 },
     ],
     // Wings with the first voice; the wind runs under the story until the third clip ("until...") arrives and then fades;
     // the stomach growl lands at the end of the first clip (the voice says "hungry" at ~11.9s)
@@ -329,7 +345,17 @@ export const pages = [
       { src: '/assets/narration/s2p2/S2-P2-PANEL3-NARRATOR-001.2.wav' },
     ],
     advanceAfter: 3,
-    videoSeconds: 24.2,
+    videoSeconds: 27.5,   // the video is 24.2s: its last frame holds for 3s, then the page turns
+    // Boxes stay once shown (none clears): "Such a courageous feat" when the voice starts (0:00.7) and "Salaksak, a name" at 0:04.5 on the left,
+    // "Until suddenly" on the right as the first audio finishes (the second audio starts)
+    captions: [
+      { src: '/assets/comic/S2P2/English/ENG_SUCH A COUREOUS FEAT.webp', srcByLang: { pam: '/assets/comic/S2P2/Pampanga/PAM_SUCH A COUREOUS FEAT.webp' },
+        alt: 'Such a courageous feat...', at: { x: 13.8, y: 11.4 }, clip: 0, voiceAt: 0.7, fallbackAt: 1 },
+      { src: '/assets/comic/S2P2/English/ENG_SALAKSAK A NAME.webp', srcByLang: { pam: '/assets/comic/S2P2/Pampanga/PAM_SALAKSAK A NAME.webp' },
+        alt: 'Salaksak, a name...', at: { x: 35.4, y: 21.2 }, clip: 0, voiceAt: 4.5, fallbackAt: 4.5 },
+      { src: '/assets/comic/S2P2/English/ENG_UNTIL SUDDENLY.webp', srcByLang: { pam: '/assets/comic/S2P2/Pampanga/PAM_UNTIL SUDDENLY.webp' },
+        alt: 'Until suddenly...', at: { x: 87, y: 32 }, clip: 1, voiceAt: 0, fallbackAt: 10 },
+    ],
     // The sound starts 8s into narration clip 1 (clip index 0)
     sfx: [{ src: '/assets/audio/sfx/s2p2/Alligator Growl And Snap Sound Effect.mp3', on: 'enter', clip: 0, at: 8 }],
   },
@@ -349,6 +375,15 @@ export const pages = [
     ],
     advanceAfter: 3,
     videoSeconds: 30,
+    // One box, top centre of the frame (where the layout puts it); it appears at 0:06, when the first voice clip starts
+    captions: [
+      {
+        src: '/assets/comic/S2P3/English/ENG_SALAKSAKS FORM.webp',
+        srcByLang: { pam: '/assets/comic/S2P3/Pampanga/PAM_SALAKSAKS FORM.webp' },
+        alt: "Salaksak's form.",
+        at: { x: 50.5, y: 22.9 }, clip: 0, voiceAt: 0, fallbackAt: 6,
+      },
+    ],
     // The phoenix roar and the shining play at 0:12 of the page; the growl starts with the second voice clip
     sfx: [
       { src: '/assets/audio/sfx/s2p3/Phoenix Roars.mp3', on: 'enter', at: 12, volume: 0.6 },

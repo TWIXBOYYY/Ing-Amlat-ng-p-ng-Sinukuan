@@ -278,3 +278,8 @@
   color: #4a2a12;
   text-shadow: none;
 }
+
+/* Fullscreen: a single icon button at the end of the language row */
+.settings-fs-btn {
+  margin-left: auto;
+}

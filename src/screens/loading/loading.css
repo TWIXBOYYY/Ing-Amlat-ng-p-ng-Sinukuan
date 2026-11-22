@@ -106,3 +106,65 @@
   from { opacity: 0.55; }
   to   { opacity: 1; }
 }
+
+/* ── Foreword start screen: the day mountain with the turning sun, the foreword, and a Continue button once everything has loaded ── */
+.screen-foreword {
+  padding: clamp(10px, 3vmin, 40px);
+  gap: clamp(8px, 2vmin, 26px);
+}
+
+.screen-foreword .loading-label { font-size: calc(var(--fs-display) * 1.8); }
+
+.screen-foreword .loading-orb-wrap {
+  width: clamp(72px, 19vmin, 220px);
+  height: clamp(72px, 19vmin, 220px);
+}
+
+.screen-foreword .loading-orb-glow { inset: -20px; }
+
+/* a soft dark panel keeps the white text readable over the sky and mountain */
+.loading-foreword {
+  width: min(64ch, 88vw);
+  text-align: center;
+  font-family: var(--font-mclaren);
+  font-size: clamp(0.72rem, 1.9vmin, 1.4rem);
+  line-height: 1.42;
+  color: #fff;
+  background: rgba(14, 30, 24, 0.58);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border-radius: 14px;
+  padding: clamp(10px, 2.2vmin, 28px) clamp(14px, 3vmin, 36px);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  animation: foreword-in 0.8s ease 0.5s forwards;
+}
+
+.loading-foreword p { margin: 0; }
+.loading-foreword p + p { margin-top: 1.1em; }
+
+@keyframes foreword-in { to { opacity: 1; } }
+
+.loading-continue {
+  font-family: var(--font-mclaren);
+  font-size: clamp(0.95rem, 2.5vmin, 1.7rem);
+  color: #fff;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+  width: clamp(120px, 20vmin, 200px);
+  height: clamp(44px, 7.5vmin, 74px);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: url('/assets/ui/MEDIUM LENGTH.png') center/100% 100% no-repeat;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+  visibility: hidden;      /* keeps its place so nothing shifts when it appears */
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.15s, filter 0.15s;
+}
+
+.loading-continue.is-ready { visibility: visible; opacity: 1; }
+.loading-continue.is-ready:hover,
+.loading-continue.is-ready:focus-visible { transform: scale(1.06); filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.7)) brightness(1.12); outline: none; }
+.loading-continue.is-ready:active { transform: scale(0.96); }
+
+.screen-foreword:has(.is-ready) { cursor: default; }
