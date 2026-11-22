@@ -99,7 +99,7 @@ export function createReaderScreen() {
         <div class="reader-hud-left">
           <!-- Home -->
           <button class="reader-hud-img-btn" id="reader-home-btn" aria-label="Return to home">
-            <img src="/assets/ui/Vector.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
+            <img src="/assets/ui/Icon/BACK.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
           </button>
           <!-- Restart -->
           <button class="reader-hud-img-btn reader-hud-restart-btn" id="reader-restart-btn" aria-label="Restart from page 1">
@@ -107,17 +107,13 @@ export function createReaderScreen() {
           </button>
           <!-- Autoplay -->
           <button class="reader-hud-img-btn" id="reader-autoplay-btn" aria-label="Toggle autoplay" aria-pressed="false">
-            <img src="/assets/ui/Layer 6.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
+            <img src="/assets/ui/Icon/AUTOPLAY ON.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
           </button>
         </div>
         <div class="reader-hud-right">
           <!-- Settings -->
           <button class="reader-hud-img-btn" id="reader-settings-btn" aria-label="Open audio settings" aria-expanded="false">
-            <span class="reader-hud-btn-img" aria-hidden="true">
-        <img src="/assets/ui/Rectangle 43.png" draggable="false" alt=""/>
-        <img src="/assets/ui/Rectangle 43.png" draggable="false" alt=""/>
-        <img src="/assets/ui/Rectangle 43.png" draggable="false" alt=""/>
-      </span>
+            <img src="/assets/ui/Icon/HAMBURG.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
           </button>
         </div>
       </div>
@@ -694,6 +690,8 @@ function setHold(el, on) {
   if (on) clearTimeout(advanceTimer);   // a turn already waiting is cancelled
   const btn = el?.querySelector('#reader-autoplay-btn');
   btn?.classList.toggle('autoplay-active', !on);
+  const icon = btn?.querySelector('img');
+  if (icon) icon.src = on ? '/assets/ui/Icon/AUTOPLAY OFF.png' : '/assets/ui/Icon/AUTOPLAY ON.png';   // on by default; off while the page is held
   btn?.setAttribute('aria-pressed', String(on));
 }
 

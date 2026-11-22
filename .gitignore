@@ -24,3 +24,10 @@ public/assets/audio/ambience/Space Ambient Music*
 public/assets/audio/ambience/Nature Sounds Of Scotland*
 # full-length forest birds recording (6 MB); the site plays the 30s cut, menu-forest-birds-30s.mp3
 public/assets/audio/ambience/FORESTY BIRDS.mp3
+
+# large originals kept out of git (the site uses the .webp copies)
+public/assets/comic/S2P1/English/*.png
+public/assets/comic/S2P1/Pampanga/*.png
+public/assets/characters ui/Bulan/MALARI.png
+public/assets/characters ui/Apung Sinukuan/SUKU.png
+public/assets/characters ui/Apung Mangacha/APUNG MANGGACHA.PNG

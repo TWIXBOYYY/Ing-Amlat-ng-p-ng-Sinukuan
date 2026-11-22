@@ -298,12 +298,12 @@ export const pages = [
     // Captions follow the narration: clip 1 (13.8s) says the first two boxes, clip 2 (from 0.5s) the next three and, as its last word, "until".
     // voiceAt is seconds after the clip starts; fallbackAt is seconds after the page opens (used only if the voice can't start).
     captions: [
-      { src: '/assets/comic/S2P1/ENG_HIGH IN THE HEAVENS.webp',        alt: 'High in the heavens, Apung Batala, the majestic sky bird, reigns.', at: { x: 21.6, y: 15 },    clip: 0, voiceAt: 0.5, fallbackAt: 1.5 },
-      { src: '/assets/comic/S2P1/ENG_ONE FATEFUL DAY.webp',            alt: 'One fateful day, they wandered the world, hungry.',               at: { x: 30.8, y: 25 },   clip: 0, voiceAt: 6.0, fallbackAt: 7 },
-      { src: '/assets/comic/S2P1/ENG_THEY SEARCHED EVERYWHERE.webp',   alt: 'They searched everywhere—above...',                            at: { x: 23, y: 74 },     clip: 1, voiceAt: 0.5, fallbackAt: 15.3 },
-      { src: '/assets/comic/S2P1/ENG_AND BELOW.webp',                  alt: 'And below...',                                                    at: { x: 32, y: 83 },     clip: 1, voiceAt: 3.8, fallbackAt: 18.6 },
-      { src: '/assets/comic/S2P1/ENG_BUT FOUND NOTHING.webp',          alt: 'But found nothing...',                                            at: { x: 49.5, y: 80 }, clip: 1, voiceAt: 6.1, fallbackAt: 20.9 },
-      { src: '/assets/comic/S2P1/ENG_UNTIL.webp',                      alt: 'Until...',                                                        at: { x: 58.5, y: 20 }, clip: 1, voiceAt: 9.5, fallbackAt: 24.3,   // the last word of narration clip 2 (its voice is ~10.1-10.7s in the file, 9.6-10.2s after the clip starts)
+      { src: '/assets/comic/S2P1/English/ENG_HIGH IN THE HEAVENS.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_HIGH IN THE HEAVENS.webp' },        alt: 'High in the heavens, Apung Batala, the majestic sky bird, reigns.', at: { x: 21.6, y: 15 },    clip: 0, voiceAt: 0.5, fallbackAt: 1.5 },
+      { src: '/assets/comic/S2P1/English/ENG_ONE FATEFUL DAY.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_ONE FAITHFUL DAY.webp' },            alt: 'One fateful day, they wandered the world, hungry.',               at: { x: 30.8, y: 25 },   clip: 0, voiceAt: 6.0, fallbackAt: 7 },
+      { src: '/assets/comic/S2P1/English/ENG_THEY SEARCHED EVERYWHERE.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_THEY SEARCHED EVERYWHERE.webp' },   alt: 'They searched everywhere—above...',                            at: { x: 23, y: 74 },     clip: 1, voiceAt: 0.5, fallbackAt: 15.3 },
+      { src: '/assets/comic/S2P1/English/ENG_AND BELOW.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_AND BELOW.webp' },                  alt: 'And below...',                                                    at: { x: 32, y: 83 },     clip: 1, voiceAt: 3.8, fallbackAt: 18.6 },
+      { src: '/assets/comic/S2P1/English/ENG_BUT FOUND NOTHING.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_BUT FOUND NOTHING.webp' },          alt: 'But found nothing...',                                            at: { x: 49.5, y: 80 }, clip: 1, voiceAt: 6.1, fallbackAt: 20.9 },
+      { src: '/assets/comic/S2P1/English/ENG_UNTIL.webp', srcByLang: { pam: '/assets/comic/S2P1/Pampanga/PAM_UNTIL.webp' },                      alt: 'Until...',                                                        at: { x: 58.5, y: 20 }, clip: 1, voiceAt: 9.5, fallbackAt: 24.3,   // the last word of narration clip 2 (its voice is ~10.1-10.7s in the file, 9.6-10.2s after the clip starts)
         replaces: [0, 1, 2, 3, 4] },   // every earlier box clears away as "Until" appears
     ],
     // Wings with the first voice; the wind runs under the story until the third clip ("until...") arrives and then fades;
@@ -415,8 +415,23 @@ export const pages = [
   },
   {
     id: 'page-12',
-    image: '/assets/comic/page-12.webp',
-    alt: 'Page 12 — art coming soon.',   // S3 page 5: not added yet
+    video: '/assets/comic/s3p5/S3 P5 Motion.mp4',   // S3 page 5 (25s)
+    alt: 'Season 3, page 5 — motion graphic.',
+    music:    '/assets/audio/music/theme-mystery.mp3',
+    ambience: null,
+    // seconds from when the page opens: the voice at 0:02, the tremor at 0:06, the stab and scream together at 0:18
+    narrationDelay: 2,
+    sfx: [
+      { src: '/assets/audio/sfx/s3p5/EARTH SHAKING.mp3', on: 'enter', at: 6, volume: 0.35 },
+      { src: '/assets/audio/sfx/s3p5/Knife Stab Original Sound Effect.mp3', on: 'enter', at: 18 },
+      { src: '/assets/audio/sfx/s3p5/Female Scream Sound Effect (HD).mp3', on: 'enter', at: 18 },
+    ],
+    narration: [
+      { src: '/assets/narration/s3p5/S3-P5-PANEL1-3-NARRATOR-001.wav' },
+      { src: '/assets/narration/s3p5/S3-P5-PANEL1-3-NARRATOR-002.wav' },
+    ],
+    advanceAfter: 1.5,
+    videoSeconds: 25,   // the page turns as the whole 25s video ends
   },
   {
     id: 'page-13',
@@ -462,11 +477,6 @@ export const pages = [
       { src: '/assets/narration/s3p8/S3-P8-NARRATOR-001.wav' },
     ],
     advanceAfter: 1.5,
-  },
-  {
-    id: 'page-16',
-    image: '/assets/comic/page-16.webp',
-    alt: 'Page 16 — art coming soon.',
   },
 ];
 

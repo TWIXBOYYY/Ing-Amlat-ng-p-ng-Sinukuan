@@ -7,22 +7,13 @@ const PAGE_TURN_SFX = encodeURI('/assets/audio/sfx/ui/Turn a page.mp3');
 
 const CHARACTERS = [
   {
-    id: 'bulan',
-    name: 'Búlan',
-    subtitle: 'God of the Moon',
-    description: 'The other soul that emerged from Ápûng Batálâ\'s two souls, depicted as the Moon and the rival of Aldó. After emerging, Búlan became a red fiery bird who battles Aldó for rulership of the heavens.',
-    artLeft: '/assets/characters ui/Bulan/Left Bulan.png',
-    artRight: '/assets/characters ui/Bulan/Right Bulan.png',
-  },
-  {
-    id: 'apung-mallari',
-    name: 'Ápûng Maliari',
-    subtitle: 'Deity of Mt. Pinatubo',
-    description: 'As they continued to fight on Earth, the birds take flesh as a mountain-sized female giant and continued to fight Ápûng Sínukuan using Bamboo poles as their weapon.',
-    layout: 'text-right',
-    artLeft: '/assets/characters ui/Apung Mallari/Apung Mallari Face.png',
-    artRight: '/assets/characters ui/Apung Mallari/Apung Mallari Whole.png',
-    artExtra: null,
+    id: 'apung-punsalan',
+    name: 'Ápûng Punsalán',
+    aka: '(Ápûng Maliari / Búlan)',
+    description: 'Also known as Búlan when he came to be a red fiery Phoenix and Ápûng Maliari as they turned into giants, is the ruler of heavens during the night.',
+    layout: 'phoenix-left',
+    artLeft: null,
+    artRight: '/assets/characters ui/Bulan/Punsalan.webp',
   },
   {
     id: 'indung-tibuan',
@@ -48,35 +39,17 @@ const CHARACTERS = [
     subtitle: 'Spirit of the Weaver',
     description: 'The giant spider who weaves the Siklúban, a dome which holds the sky and water.',
     layout: 'mangacha',
-    artLeft: '/assets/characters ui/Apung Mangacha/Apung Mangacha Head.png',
-    artRight: '/assets/characters ui/Apung Mangacha/Apung Mangacha Whole.png',
+    artLeft: null,
+    artRight: '/assets/characters ui/Apung Mangacha/Manggacha.webp',
   },
   {
     id: 'apung-sinukuan',
     name: 'Ápûng Sínukuan',
-    subtitle: 'God of the Sun & War',
-    description: 'A fiery white bird illuminating the heavens. He clashes with Búlan and is determined to rule the sky. The mighty ruler of Mt. Arayat who commands the forces of fire, war, and the blazing sun.',
-    layout: 'sinukuan',
-    artLeft: '/assets/characters ui/Apung Sinukuan/Apung Sinukuan Face.png',
-    artRight: '/assets/characters ui/Apung Sinukuan/Apung Sinukuan.png',
-  },
-  {
-    id: 'aldo',
-    name: 'Aldó',
-    subtitle: 'Solar Deity',
-    description: 'One of Ápûng Batálâ\'s two souls, released after his body dissolved inside Indung Tíbúan\'s belly. Aldó is depicted as the Sun.',
-    layout: 'aldo',
+    aka: '(Ápûng Sukû / Aldó)',
+    description: 'First known as Aldo the white fiery Phoenix then as Ápûng Sukû upon arriving in Earth. The rival of Ápung Punsalán, ruler of heavens when the sun is up.',
+    layout: 'phoenix-right',
     artLeft: null,
-    artRight: '/assets/characters ui/Aldo/soul aldo.png',
-  },
-  {
-    id: 'apung-namalyari',
-    name: 'Búlan',
-    subtitle: 'Creator & Protector',
-    description: 'The other soul that emerged from Ápûng Batálâ and depicted as the Moon and the rival of Aldó.',
-    layout: 'namalyari',
-    artLeft: null,
-    artRight: '/assets/characters ui/Bulan/Soul  Bulan.png',
+    artRight: '/assets/characters ui/Apung Sinukuan/Suku.webp',
   },
 ];
 
@@ -94,6 +67,7 @@ export function createCharactersScreen() {
     <div class="char-viewer" data-layout="text-left">
       <div class="char-text">
         <h2 class="char-name">${first.name}</h2>
+        <p class="char-aka"></p>
         <div class="char-description"></div>
       </div>
       <div class="char-art-area">
@@ -124,7 +98,7 @@ export function createCharactersScreen() {
     </div>
 
     <button class="char-back-btn" aria-label="Go back to home">
-      <img src="/assets/ui/Vector.png" class="char-back-arrow" alt="" aria-hidden="true" draggable="false"/>
+      <img src="/assets/ui/Icon/BACK.png" class="char-back-arrow" alt="" aria-hidden="true" draggable="false"/>
     </button>
   `;
 
@@ -155,6 +129,7 @@ const SLIDE_PX = 12;
 /** @param {HTMLElement} el */
 export function mountCharacters(el) {
   const nameEl   = el.querySelector('.char-name');
+  const akaEl    = el.querySelector('.char-aka');
   const descEl   = el.querySelector('.char-description');
   const bodyEl   = el.querySelector('.char-art-body');
   const faceEl   = el.querySelector('.char-art-face');
@@ -178,6 +153,8 @@ export function mountCharacters(el) {
   function applyCharacter(char) {
     viewer.dataset.layout = char.layout || 'text-left';
     nameEl.textContent = char.name;
+    akaEl.textContent = char.aka || '';
+    akaEl.hidden = !char.aka;
     setDescription(descEl, char.description);
     setArt(bodyEl, char.artRight);
     setArt(faceEl, char.artLeft);

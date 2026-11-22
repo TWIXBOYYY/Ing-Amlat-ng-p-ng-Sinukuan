@@ -7,13 +7,11 @@ const ART = '/assets/characters ui';
 // image = the character's primary piece; alt describes the picture without naming it.
 // tabletImage (optional) = a closer piece used on tablet portrait, where the card art is small
 const GAME_CHARS = [
-  { id: 'bulan',          name: 'Bulan',          image: `${ART}/Bulan/Right Bulan.png`,                        w: 555,  h: 686, alt: 'Illustration of a fiery red bird' },
-  { id: 'apung-mallari',  name: 'Apung Mallari',  image: `${ART}/Apung Mallari/Apung Mallari Whole.png`,         w: 432,  h: 779, alt: 'Illustration of a tall woman with long dark hair and a flowing cape',
-    tabletImage: `${ART}/Apung Mallari/Apung Mallari Face.png` },
-  { id: 'indung-tibuan',  name: 'Indung Tibuan',  image: `${ART}/Indung Tibuan/Indung Tibuan Whole.png`,         w: 1436, h: 571, alt: 'Illustration of a giant crocodile' },
-  { id: 'apung-mangacha', name: 'Apung Mangacha', image: `${ART}/Apung Mangacha/Apung Mangacha Whole.png`,       w: 829,  h: 694, alt: 'Illustration of a giant black spider' },
-  { id: 'apung-sinukuan', name: 'Apung Sinukuan', image: `${ART}/Apung Sinukuan/Apung Sinukuan.png`,             w: 456,  h: 794, alt: 'Illustration of a tall white bird with a flame-colored tail' },
-  { id: 'aldo',           name: 'Aldo',           image: `${ART}/Aldo/soul aldo.png`,                            w: 853,  h: 850, alt: 'Illustration of a glowing round sun spirit' },
+  { id: 'apung-punsalan', name: 'Apung Punsalan', image: `${ART}/Bulan/Punsalan.webp`,                      w: 2009, h: 2314, alt: 'Illustration of a red fiery phoenix with spread wings' },
+  { id: 'indung-tibuan',  name: 'Indung Tibuan',  image: `${ART}/Indung Tibuan/Indung Tibuan Whole.png`,       w: 1436, h: 571,  alt: 'Illustration of a giant crocodile' },
+  { id: 'apung-batala',   name: 'Apung Batala',   image: `${ART}/Apung Batala/Batala.png`,                     w: 675,  h: 756,  alt: 'Illustration of a blue-feathered kingfisher' },
+  { id: 'apung-mangacha', name: 'Apung Mangacha', image: `${ART}/Apung Mangacha/Manggacha.webp`,              w: 4200, h: 2548, alt: 'Illustration of a giant black spider seen from the front' },
+  { id: 'apung-sinukuan', name: 'Apung Sinukuan', image: `${ART}/Apung Sinukuan/Suku.webp`,                    w: 2103, h: 2314, alt: 'Illustration of a white fiery phoenix with spread wings' },
 ];
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
@@ -67,7 +65,7 @@ function buildGame(el) {
   el.innerHTML = `
     <div class="mg-board">
       <button class="mg-home-btn" aria-label="Go back to home">
-        <img src="/assets/ui/Vector.png" class="mg-home-arrow" draggable="false" alt=""/>
+        <img src="/assets/ui/Icon/BACK.png" class="mg-home-arrow" draggable="false" alt=""/>
       </button>
       <div class="mg-title-wrap">
         <h1 class="mg-title">WHO IS WHO</h1>
