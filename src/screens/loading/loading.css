@@ -168,3 +168,29 @@
 .loading-continue.is-ready:active { transform: scale(0.96); }
 
 .screen-foreword:has(.is-ready) { cursor: default; }
+
+/* ── Small / short landscape screens (phones, iPads): never let the Continue button fall off-screen ── */
+.screen-foreword {
+  overflow-x: hidden;
+  overflow-y: auto;                      /* scrolls if the content is still taller than the screen */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  justify-content: flex-start;           /* centering is done with auto margins so tall content can't be clipped */
+}
+.screen-foreword > .loading-label { margin-top: auto; }
+.screen-foreword > .loading-continue { margin-bottom: auto; flex-shrink: 0; position: relative; z-index: 5; }
+.screen-foreword > .loading-foreword,
+.screen-foreword > .loading-orb-wrap { flex-shrink: 0; }
+
+.loading-continue { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+@media (max-height: 520px) {
+  .screen-foreword { padding: 8px 12px; gap: 6px; }
+  .screen-foreword .loading-label { font-size: clamp(1rem, 6vmin, 1.8rem); }
+  .screen-foreword .loading-orb-wrap { width: 48px; height: 48px; }
+  .screen-foreword .loading-orb-glow { inset: -8px; }
+  .loading-foreword { font-size: clamp(0.62rem, 3.1vmin, 0.85rem); line-height: 1.3; padding: 8px 14px; }
+  .loading-foreword p + p { margin-top: 0.6em; }
+  .loading-continue { height: 40px; width: 120px; font-size: 0.9rem; }
+}
