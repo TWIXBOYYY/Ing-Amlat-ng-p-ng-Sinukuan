@@ -106,8 +106,13 @@ function buildGame(el) {
 
   // Card art fades in once loaded
   el.querySelectorAll('.mg-img-slot img').forEach(img => {
-    if (img.complete) img.classList.add('is-loaded');
-    else img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+    const show = () => img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth) show();
+    else {
+      img.addEventListener('load', show, { once: true });
+      img.addEventListener('error', show, { once: true });
+      setTimeout(show, 2500);   // never leave a card art invisible if the load event is missed (iOS)
+    }
   });
 
   wireInput(el, {

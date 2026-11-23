@@ -81,6 +81,19 @@ function buildRow({ key, label }) {
     </div>`;
 }
 
+/** iPhone Safari cannot enter fullscreen from a page: say how to get it (Add to Home Screen opens the site without the browser bars). */
+function showFullscreenTip(anchor) {
+  let tip = _overlay.querySelector('.settings-fs-tip');
+  if (!tip) {
+    tip = document.createElement('p');
+    tip.className = 'settings-fs-tip';
+    tip.setAttribute('role', 'status');
+    tip.textContent = 'On iPhone, tap Share, then "Add to Home Screen". Open the site from your home screen for fullscreen.';
+    anchor.closest('.settings-language').after(tip);
+  }
+  tip.classList.toggle('show');
+}
+
 export function createSettingsOverlay() {
   _overlay = document.createElement('div');
   _overlay.className = 'settings-overlay';
@@ -95,7 +108,7 @@ export function createSettingsOverlay() {
       <div class="settings-language" role="group" aria-label="Story language">
         <span class="settings-row-label">Language</span>
         ${LANGUAGES.map(l => `<button type="button" class="settings-lang-btn${l.code === getLanguage() ? ' active' : ''}" data-lang="${l.code}" aria-pressed="${l.code === getLanguage()}">${l.label}</button>`).join('')}
-        ${canFullscreen ? `<button type="button" class="settings-mute-btn settings-fs-btn" aria-label="Enter fullscreen" title="Fullscreen" aria-pressed="false">${ICON_EXPAND}</button>` : ''}
+        <button type="button" class="settings-mute-btn settings-fs-btn" aria-label="${canFullscreen ? 'Enter fullscreen' : 'How to go fullscreen on this device'}" title="Fullscreen" aria-pressed="false">${ICON_EXPAND}</button>
       </div>
     </div>`;
 
@@ -128,6 +141,7 @@ export function createSettingsOverlay() {
       fsBtn.setAttribute('aria-label', on ? 'Exit fullscreen' : 'Enter fullscreen');
     };
     fsBtn.addEventListener('click', () => {
+      if (!canFullscreen) { showFullscreenTip(fsBtn); return; }
       if (isFullscreen()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
       else (fsRoot.requestFullscreen || fsRoot.webkitRequestFullscreen).call(fsRoot);
     });

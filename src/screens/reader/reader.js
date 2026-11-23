@@ -68,7 +68,7 @@ function buildPageEl(page, index) {
     el.innerHTML = `
       <canvas class="reader-page-ambient" width="32" height="18" aria-hidden="true"></canvas>
       <div class="reader-page-media"${page.videoFit === 'contain' ? ' data-fit="contain"' : ''}${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
-        <video class="reader-page-video" src="${encodeURI(page.video)}" ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
+        <video class="reader-page-video" src="${encodeURI(page.video)}" poster="${encodeURI(page.video.replace(/.mp4$/i, '.jpg'))}" disablepictureinpicture webkit-playsinline ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
                preload="${index === 0 ? 'auto' : 'metadata'}" aria-label="${page.alt || `Page ${index + 1}`}"></video>
         <div class="reader-caption-frame">
           ${(page.captions || []).map((c, i) => `
@@ -77,6 +77,8 @@ function buildPageEl(page, index) {
             </div>`).join('')}
         </div>
       </div>`;
+    const vid = el.querySelector('video');
+    if (vid && !page.videoSound) { vid.muted = true; vid.defaultMuted = true; }   // iOS only autoplays a video that is really muted
     return el;
   }
 
@@ -414,7 +416,13 @@ function playPageVideo(idx) {
     v.addEventListener('timeupdate', () => { v.muted = v.currentTime < from; });
   }
   if (from != null) v.muted = v.currentTime < from;
-  v.play().catch(() => { /* autoplay blocked: first frame stays visible */ });
+  const p = v.play();
+  p?.catch(() => {
+    // autoplay blocked (iOS Low Power Mode, data saver): the poster stays up and the next tap starts the picture
+    const kick = () => { if (idx === videoTarget && v.paused) v.play().catch(() => {}); };
+    document.addEventListener('pointerdown', kick, { once: true, capture: true });
+    document.addEventListener('touchend', kick, { once: true, capture: true });
+  });
 }
 
 /**
@@ -601,7 +609,7 @@ let gateToken = 0;
 let loadingTimer = 0;
 
 /** Resolves when the video can play through (or after maxMs, or if it fails), so a slow download is waited for. */
-function whenVideoReady(v, maxMs = 10000) {
+function whenVideoReady(v, maxMs = 6000) {
   return new Promise((resolve) => {
     if (v.readyState >= 3) { resolve(); return; }
     v.preload = 'auto';
