@@ -68,7 +68,7 @@ function buildPageEl(page, index) {
     el.innerHTML = `
       <canvas class="reader-page-ambient" width="32" height="18" aria-hidden="true"></canvas>
       <div class="reader-page-media"${page.videoFit === 'contain' ? ' data-fit="contain"' : ''}${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
-        <video class="reader-page-video" src="${encodeURI(page.video)}" poster="${encodeURI(page.video.replace(/.mp4$/i, '.jpg'))}" disablepictureinpicture webkit-playsinline ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
+        <video class="reader-page-video" data-src="${encodeURI(page.video)}" poster="${encodeURI(page.video.replace(/.mp4$/i, '.jpg'))}" disablepictureinpicture webkit-playsinline ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
                preload="${index === 0 ? 'auto' : 'metadata'}" aria-label="${page.alt || `Page ${index + 1}`}"></video>
         <div class="reader-caption-frame">
           ${(page.captions || []).map((c, i) => `
@@ -394,6 +394,7 @@ function wakeHud(el) {
  */
 function syncVideos(idx) {
   videoTarget = idx;
+  manageVideos(idx);
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   pageEls.forEach((pe, i) => {
     const v = pe.querySelector('video');
@@ -403,6 +404,34 @@ function syncVideos(idx) {
     v.currentTime = 0;
     if (!reduced && !pages[i].narration) playPageVideo(i);
   });
+}
+
+/** If the picture has not really started 1.5s after it should have, offer a big Play button (iPhone Low Power Mode, stalled download). */
+function watchStart(idx, v) {
+  const pe = pageEls[idx];
+  clearTimeout(pe._startCheck);
+  pe._startCheck = setTimeout(() => {
+    if (idx !== videoTarget) return;
+    const moving = !v.paused && v.currentTime > 0.05;
+    let btn = pe.querySelector('.reader-tap-play');
+    if (moving) { btn?.remove(); return; }
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'reader-tap-play';
+      btn.setAttribute('aria-label', 'Play the picture');
+      btn.textContent = '▶';
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        v.muted = !pages[idx].videoSound;
+        if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src;
+        v.play().then(() => btn.remove()).catch(() => { v.load(); v.play().catch(() => {}); });
+      });
+      pe.appendChild(btn);
+    }
+    // keep checking: once it moves, the button goes away
+    pe._startCheck = setTimeout(() => watchStart(idx, v), 1500);
+  }, 1500);
 }
 
 function playPageVideo(idx) {
@@ -416,6 +445,7 @@ function playPageVideo(idx) {
     v.addEventListener('timeupdate', () => { v.muted = v.currentTime < from; });
   }
   if (from != null) v.muted = v.currentTime < from;
+  watchStart(idx, v);
   const p = v.play();
   p?.catch(() => {
     // autoplay blocked (iOS Low Power Mode, data saver): the poster stays up and the next tap starts the picture
@@ -754,14 +784,35 @@ function loadCaptions(pe) {
   });
 }
 
+/**
+ * Phones can only keep a few videos in memory (iPhone Safari drops them silently: black picture, or a frozen frame).
+ * So only the current page's video and the next one have a source; every other video is emptied.
+ */
+function manageVideos(idx) {
+  pageEls.forEach((pe, i) => {
+    const v = pe.querySelector('video');
+    if (!v) return;
+    const keep = i === idx || i === idx + 1;
+    if (keep && !v.getAttribute('src') && v.dataset.src) {
+      v.preload = i === idx ? 'auto' : 'metadata';
+      v.src = v.dataset.src;
+      v._assetSrc = null;
+    } else if (!keep && v.getAttribute('src')) {
+      v.pause();
+      v.removeAttribute('src');
+      v._assetSrc = null; v._assetTries = 0;
+      v.load();                                   // releases the decoder and its buffers
+    }
+  });
+}
+
 function preloadAhead(idx) {
+  manageVideos(idx);
   loadCaptions(pageEls[idx]);
   loadCaptions(pageEls[idx - 1]);
   for (let i = idx + 1; i <= idx + PRELOAD_AHEAD && i < pages.length; i++) {
     loadCaptions(pageEls[i]);
     const img = pageEls[i]?.querySelector('.reader-page-img');
     if (img && !img.src) img.src = pages[i].image;
-    const video = pageEls[i]?.querySelector('video');
-    if (video) video.preload = 'auto';
   }
 }

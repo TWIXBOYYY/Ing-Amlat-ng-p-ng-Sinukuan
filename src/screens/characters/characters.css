@@ -826,3 +826,20 @@
     --dot: clamp(10px, 2.8vw, 15px);
   }
 }
+
+/* ── Touch screens: bigger, always-visible character arrows on a round gold backing ── */
+@media (pointer: coarse), (max-height: 520px) {
+  .char-nav-btn {
+    opacity: 1 !important;
+    width: clamp(64px, 17vh, 104px) !important;
+    height: clamp(64px, 17vh, 104px) !important;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(78, 52, 14, 0.85), rgba(40, 26, 6, 0.85));
+    border: 3px solid #e8c84a;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+  .char-nav-btn:disabled { opacity: 0.3 !important; }
+  .char-nav-btn .char-nav-img { width: 62%; height: 62%; }
+  .char-prev-btn { left: max(8px, env(safe-area-inset-left)) !important; }
+  .char-next-btn { right: max(8px, env(safe-area-inset-right)) !important; }
+}

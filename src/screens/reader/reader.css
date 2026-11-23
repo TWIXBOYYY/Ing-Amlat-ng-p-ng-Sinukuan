@@ -486,3 +486,43 @@ span.reader-hud-btn-img img {
 @media (min-aspect-ratio: 1/1) and (max-height: 600px) {
   .reader-page-media { --fit-w: min(100cqw, calc(100cqh * var(--video-ar))); }
 }
+
+/* Play button shown only when the picture did not start by itself */
+.reader-tap-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 15;
+  width: clamp(72px, 16vmin, 120px);
+  height: clamp(72px, 16vmin, 120px);
+  border-radius: 50%;
+  border: 3px solid #e8c84a;
+  background: rgba(30, 20, 5, 0.72);
+  color: #fff;
+  font-size: clamp(32px, 7vmin, 56px);
+  line-height: 1;
+  padding-left: 0.12em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Touch screens (phones, iPads): big page arrows that are always visible, on a round paper-gold backing ── */
+@media (pointer: coarse), (max-height: 520px) {
+  .reader-nav { opacity: 1 !important; pointer-events: all !important; }
+  .reader-nav-btn {
+    --nb: clamp(76px, 20vh, 120px);
+    width: var(--nb);
+    height: var(--nb);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(78, 52, 14, 0.82), rgba(40, 26, 6, 0.82));
+    border: 3px solid #e8c84a;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55), inset 0 0 12px rgba(232, 200, 74, 0.25);
+    display: grid;
+    place-items: center;
+  }
+  .reader-nav-btn .nav-arrow-img { width: 62%; height: 62%; }
+  .reader-nav-btn:disabled { opacity: 0.3; }
+  .reader-nav-prev { left: max(10px, env(safe-area-inset-left)); }
+  .reader-nav-next { right: max(10px, env(safe-area-inset-right)); }
+}
