@@ -194,3 +194,15 @@
   .loading-foreword p + p { margin-top: 0.6em; }
   .loading-continue { height: 40px; width: 120px; font-size: 0.9rem; }
 }
+
+/* ── iPhone/iPad Safari with its bars showing: the visible area can be very short ── */
+.screen-foreword > .loading-continue { position: sticky; bottom: 6px; margin-top: 4px; }
+.screen-foreword { z-index: 1; }
+@media (max-height: 420px) {
+  .screen-foreword { padding: 6px 12px; gap: 4px; }
+  .screen-foreword .loading-label { font-size: clamp(0.8rem, 5vmin, 1.3rem); }
+  .screen-foreword .loading-orb-wrap { width: 34px; height: 34px; }
+  .loading-foreword { font-size: clamp(0.5rem, 3.2vmin, 0.72rem); line-height: 1.25; padding: 6px 12px; width: min(78ch, 94vw); }
+  .loading-foreword p + p { margin-top: 0.4em; }
+  .loading-continue { height: 34px; width: 104px; font-size: 0.8rem; }
+}
