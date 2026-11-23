@@ -129,7 +129,7 @@ export function createReaderScreen() {
           </button>
           <!-- Autoplay -->
           <button class="reader-hud-img-btn" id="reader-autoplay-btn" aria-label="Toggle autoplay" aria-pressed="false">
-            <img src="/assets/ui/Icon/AUTOPLAY ON.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
+            <img src="/assets/ui/Icon/AUTOPLAY OFF.png" class="reader-hud-btn-img" alt="" aria-hidden="true" draggable="false"/>
           </button>
         </div>
         <div class="reader-hud-right">
@@ -743,7 +743,7 @@ function setHold(el, on) {
   const btn = el?.querySelector('#reader-autoplay-btn');
   btn?.classList.toggle('autoplay-active', !on);
   const icon = btn?.querySelector('img');
-  if (icon) icon.src = on ? '/assets/ui/Icon/AUTOPLAY OFF.png' : '/assets/ui/Icon/AUTOPLAY ON.png';   // on by default; off while the page is held
+  if (icon) icon.src = on ? '/assets/ui/Icon/AUTOPLAY ON.png' : '/assets/ui/Icon/AUTOPLAY OFF.png';   // autoplay running = plain arrow; page held (autoplay off) = arrow with the cross
   btn?.setAttribute('aria-pressed', String(on));
 }
 

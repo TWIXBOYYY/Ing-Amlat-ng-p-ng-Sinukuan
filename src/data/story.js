@@ -607,10 +607,9 @@ export const pages = [
     sfx: [{ src: '/assets/audio/sfx/s3p8/Cinematic Eagle Cry Sound Effect.mp3', on: 'enter', at: 0.5, volume: 0.8 }],
     captions: [
       { src: '/assets/comic/s3p8/English/ENG_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION BOX.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION.webp' },
-        alt: "Apung Sinukuan dwelled upon Mount Alaya, the highest and most solitary peak rising from a sea of primordial flames—a place fit for a victor.", at: { x: 50, y: 50.8 }, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
+        alt: "Apung Sinukuan dwelled upon Mount Alaya, the highest and most solitary peak rising from a sea of primordial flames—a place fit for a victor.", at: { x: 16.2, y: 21.1 }, scale: 0.34, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
       { src: '/assets/comic/s3p8/English/ENG_Meanwhile, Apung Punsalang retreated to Mount Pinatubo.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_Samantalang i Apung Punsalang minatras ya king Bunduk Pinatubu.webp' },
-        alt: "Meanwhile, Apung Punsalang retreated to Mount Pinatubo.", at: { x: 85.7, y: 54.1 }, clip: 0, voiceAt: 14.5, fallbackAt: 14.5,
-        replaces: [0] },
+        alt: "Meanwhile, Apung Punsalang retreated to Mount Pinatubo.", at: { x: 85.7, y: 54.1 }, clip: 0, voiceAt: 14.5, fallbackAt: 14.5 },
       { src: '/assets/comic/s3p8/English/ENG_FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_FOOTNOTE.webp' },
         alt: "Trivia: at its heart stood Batung Maputi, the great white rock that served as Apung Sinukuan’s throne and the gateway to the upper world.", at: { x: 23.5, y: 88.9 }, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
       { src: '/assets/comic/s3p8/English/THE END.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/DULU.webp' },
