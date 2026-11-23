@@ -30,7 +30,7 @@ document.addEventListener('language:change', () => {
       img.dataset.src = encodeURI(a.src);
       if (a.box) {
         Object.assign(img.dataset, { l: a.box.l, t: a.box.t, bw: a.box.w, bh: a.box.h });
-        img.style.cssText = `position:absolute;left:${a.box.l}%;top:${a.box.t}%;width:${a.box.w}%;height:${a.box.h}%`;
+        Object.assign(img.style, { position: 'absolute', left: `${a.box.l}%`, top: `${a.box.t}%`, width: `${a.box.w}%`, height: `${a.box.h}%` });   // keep the opacity/transform the animation set
       }
       if (!img.getAttribute('src')) return;                // not fetched yet: it will load in the new language
       img.addEventListener('load', () => layoutCaptions(pe), { once: true });
