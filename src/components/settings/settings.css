@@ -283,3 +283,32 @@
 .settings-fs-btn {
   margin-left: auto;
 }
+
+/* ── Short landscape screens (phones): a smaller paper and tighter rows so every row (volumes, language, fullscreen) fits ── */
+@media (max-height: 520px) {
+  .settings-panel {
+    --toolbar-h: 60px;
+    --pw: min(30rem, calc(100vw - 32px));
+  }
+  .settings-sliders { row-gap: 0; }
+  .settings-row { min-height: 30px; column-gap: 8px; grid-template-columns: minmax(7rem, 30%) 1fr 4ch 34px; }
+  .settings-row-label, .settings-pct { font-size: 11px; }
+  .settings-mute-btn { width: 34px; height: 34px; }
+  .settings-mute-btn::before { inset: 4px; }
+  .settings-language { margin-top: 2px; gap: 6px 8px; }
+  .settings-lang-btn { font-size: 11px; padding: 3px 10px; min-height: 26px; }
+}
+
+/* Very short screens (small phones in landscape): smaller still, so the language and fullscreen row fit */
+@media (max-height: 420px) {
+  .settings-panel { --pw: min(23rem, calc(100vw - 32px)); --toolbar-h: 52px; }
+  .settings-row { min-height: 26px; }
+  .settings-mute-btn { width: 28px; height: 28px; }
+  .settings-lang-btn { min-height: 22px; }
+}
+
+/* iPhones in landscape with Safari's bars showing leave only ~280px: the panel takes the whole height instead of hanging below the buttons */
+@media (max-height: 340px) {
+  .settings-panel { --toolbar-h: 0px; --pw: min(21rem, calc(100vw - 32px)); max-height: calc(100dvh - 16px); }
+  .settings-row { min-height: 24px; }
+}

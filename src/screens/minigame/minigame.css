@@ -612,7 +612,35 @@ body.mg-is-dragging * { cursor: grabbing !important; }
   }
 }
 
-/* The white phoenix is pale on the white card on every screen size: give it contrast and a soft edge */
-.mg-card[data-id="apung-sinukuan"] .mg-img-slot img {
-  filter: contrast(1.6) saturate(1.5) drop-shadow(0 0 6px rgba(140, 100, 20, 0.85));
+/* ── Polish: warm cards, full-bleed painted art, parchment name slots and chips ── */
+.mg-img-slot {
+  background: linear-gradient(180deg, #fbf3dc 0%, #ecd9a8 100%);
+  border: 2px solid #c9a227;
+  box-shadow: 0 6px 16px rgba(40, 22, 4, 0.45), inset 0 0 0 3px rgba(255, 248, 225, 0.65);
 }
+
+/* the painted pictures (phoenixes, spider) fill the whole card; cut-out pictures keep their margin */
+.mg-img-slot img.mg-img--fill {
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  filter: none;
+}
+
+.mg-drop-zone {
+  background: linear-gradient(180deg, #fffaf0 0%, #f2e3bd 100%);
+  border: 2px dashed #8a6420;
+  color: #3a2410;
+  box-shadow: 0 3px 8px rgba(40, 22, 4, 0.35);
+}
+
+.mg-drop-zone.filled { border-style: solid; }
+
+.mg-tag {
+  background: linear-gradient(180deg, #fffaf0 0%, #f2e3bd 100%);
+  border: 2px solid #8a6420;
+  color: #3a2410;
+  box-shadow: 0 3px 8px rgba(40, 22, 4, 0.35);
+}
+
+.mg-tag:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(40, 22, 4, 0.45); }

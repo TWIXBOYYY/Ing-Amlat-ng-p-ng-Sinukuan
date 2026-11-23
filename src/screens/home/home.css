@@ -168,7 +168,7 @@ span.home-settings-btn-img img {
 /* ── Phones in landscape (short screens, e.g. 956×440) ──
    Size everything from the screen height, so the title is never cut off and the menu fits:
    title + tagline at the top over the peak, the four menu items in one row on the grass. */
-@media (orientation: landscape) and (max-height: 560px) {
+@media (orientation: landscape) and (max-height: 560px), (orientation: landscape) and (pointer: coarse) {
   .home-title-block {
     top: 3vh;
     bottom: auto;

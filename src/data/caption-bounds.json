@@ -1,0 +1,856 @@
+{
+ "/assets/comic/S1/English/ENG_IN THE BEGINNING.webp": {
+  "f": "/assets/captions/S1/English/ENG_IN THE BEGINNING.webp",
+  "l": 13.818,
+  "t": 11.433,
+  "w": 11.865,
+  "h": 28.019
+ },
+ "/assets/comic/S1/Pampanga/PAM_IN THE BEGINNING.webp": {
+  "f": "/assets/captions/S1/Pampanga/PAM_IN THE BEGINNING.webp",
+  "l": 13.428,
+  "t": 12.882,
+  "w": 12.695,
+  "h": 25.201
+ },
+ "/assets/comic/S1/English/ENG_BOTTOM OF THE DOME.webp": {
+  "f": "/assets/captions/S1/English/ENG_BOTTOM OF THE DOME.webp",
+  "l": 77.1,
+  "t": 54.75,
+  "w": 13.379,
+  "h": 33.897
+ },
+ "/assets/comic/S1/Pampanga/PAM_BOTTOM OF THE DOME.webp": {
+  "f": "/assets/captions/S1/Pampanga/PAM_BOTTOM OF THE DOME.webp",
+  "l": 77.002,
+  "t": 56.361,
+  "w": 13.623,
+  "h": 30.757
+ },
+ "/assets/comic/S1p2/English/ENG_Through the holes.webp": {
+  "f": "/assets/captions/S1p2/English/ENG_Through the holes.webp",
+  "l": 3.516,
+  "t": 37.037,
+  "w": 11.23,
+  "h": 21.82
+ },
+ "/assets/comic/S1p2/Pampanga/PAM_Through the holes.webp": {
+  "f": "/assets/captions/S1p2/Pampanga/PAM_Through the holes.webp",
+  "l": 3.564,
+  "t": 37.037,
+  "w": 11.182,
+  "h": 21.82
+ },
+ "/assets/comic/S1p2/English/ENG_The Sikluban.webp": {
+  "f": "/assets/captions/S1p2/English/ENG_The Sikluban.webp",
+  "l": 82.08,
+  "t": 42.754,
+  "w": 13.867,
+  "h": 27.617
+ },
+ "/assets/comic/S1p2/Pampanga/PAM_The Sikluban.webp": {
+  "f": "/assets/captions/S1p2/Pampanga/PAM_The Sikluban.webp",
+  "l": 82.275,
+  "t": 42.19,
+  "w": 13.477,
+  "h": 28.824
+ },
+ "/assets/comic/s1p3/English/ENG_At the bottom lies.webp": {
+  "f": "/assets/captions/s1p3/English/ENG_At the bottom lies.webp",
+  "l": 5.908,
+  "t": 21.498,
+  "w": 24.268,
+  "h": 9.098
+ },
+ "/assets/comic/s1p3/Pampanga/PAM_At the bottom lies.webp": {
+  "f": "/assets/captions/s1p3/Pampanga/PAM_At the bottom lies.webp",
+  "l": 2.881,
+  "t": 21.981,
+  "w": 30.322,
+  "h": 8.132
+ },
+ "/assets/comic/s1p3/English/ENG_The giant crocodile.webp": {
+  "f": "/assets/captions/s1p3/English/ENG_The giant crocodile.webp",
+  "l": 9.863,
+  "t": 31.32,
+  "w": 22.51,
+  "h": 7.246
+ },
+ "/assets/comic/s1p3/English/ENG_and the world shakes.webp": {
+  "f": "/assets/captions/s1p3/English/ENG_and the world shakes.webp",
+  "l": 75.488,
+  "t": 70.451,
+  "w": 19.434,
+  "h": 7.89
+ },
+ "/assets/comic/s1p3/Pampanga/PAM_and the world shakes.webp": {
+  "f": "/assets/captions/s1p3/Pampanga/PAM_and the world shakes.webp",
+  "l": 75.586,
+  "t": 70.531,
+  "w": 19.238,
+  "h": 7.81
+ },
+ "/assets/comic/s1p3/English/ENG_FOOTNOTE.webp": {
+  "f": "/assets/captions/s1p3/English/ENG_FOOTNOTE.webp",
+  "l": 4.15,
+  "t": 88.808,
+  "w": 34.961,
+  "h": 7.81
+ },
+ "/assets/comic/s1p3/English/ENG_The earth rests upon her back.webp": {
+  "f": "/assets/captions/s1p3/English/ENG_The earth rests upon her back.webp",
+  "l": 67.334,
+  "t": 62.238,
+  "w": 18.945,
+  "h": 7.649
+ },
+ "/assets/comic/s1p3/Pampanga/PAM_The earth rests upon her back.webp": {
+  "f": "/assets/captions/s1p3/Pampanga/PAM_The earth rests upon her back.webp",
+  "l": 67.334,
+  "t": 62.238,
+  "w": 18.945,
+  "h": 7.649
+ },
+ "/assets/comic/s1p4/English/ENG_LONG AGO AS APUNG.webp": {
+  "f": "/assets/captions/s1p4/English/ENG_LONG AGO AS APUNG.webp",
+  "l": 4.59,
+  "t": 5.636,
+  "w": 27.051,
+  "h": 13.124
+ },
+ "/assets/comic/s1p4/Pampanga/PAM_Long ago as Apung.webp": {
+  "f": "/assets/captions/s1p4/Pampanga/PAM_Long ago as Apung.webp",
+  "l": 4.59,
+  "t": 6.039,
+  "w": 27.051,
+  "h": 12.399
+ },
+ "/assets/comic/s1p4/English/ENG_IT FELL DOWN.webp": {
+  "f": "/assets/captions/s1p4/English/ENG_IT FELL DOWN.webp",
+  "l": 8.496,
+  "t": 83.172,
+  "w": 19.922,
+  "h": 7.246
+ },
+ "/assets/comic/s1p4/Pampanga/PAM_IT FELL DOWN.webp": {
+  "f": "/assets/captions/s1p4/Pampanga/PAM_IT FELL DOWN.webp",
+  "l": 8.496,
+  "t": 83.172,
+  "w": 19.922,
+  "h": 7.246
+ },
+ "/assets/comic/s1p4/English/ENG_LANDING RIGHT ON INDUNG.webp": {
+  "f": "/assets/captions/s1p4/English/ENG_LANDING RIGHT ON INDUNG.webp",
+  "l": 60.938,
+  "t": 6.361,
+  "w": 12.598,
+  "h": 26.167
+ },
+ "/assets/comic/s1p4/Pampanga/PAM_LANDING RIGHT ON INDUNG.webp": {
+  "f": "/assets/captions/s1p4/Pampanga/PAM_LANDING RIGHT ON INDUNG.webp",
+  "l": 60.938,
+  "t": 6.441,
+  "w": 12.598,
+  "h": 26.087
+ },
+ "/assets/comic/s1p4/English/FOOTNOTE.webp": {
+  "f": "/assets/captions/s1p4/English/FOOTNOTE.webp",
+  "l": 56.787,
+  "t": 88.889,
+  "w": 41.504,
+  "h": 9.662
+ },
+ "/assets/comic/s1p4/Pampanga/PAM_FOOTNOTE.webp": {
+  "f": "/assets/captions/s1p4/Pampanga/PAM_FOOTNOTE.webp",
+  "l": 58.057,
+  "t": 88.808,
+  "w": 39.014,
+  "h": 9.823
+ },
+ "/assets/comic/S2P1/English/ENG_HIGH IN THE HEAVENS.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_HIGH IN THE HEAVENS.webp",
+  "l": 5.908,
+  "t": 3.945,
+  "w": 31.348,
+  "h": 8.374
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_HIGH IN THE HEAVENS.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_HIGH IN THE HEAVENS.webp",
+  "l": 6.167,
+  "t": 3.454,
+  "w": 31.214,
+  "h": 8.203
+ },
+ "/assets/comic/S2P1/English/ENG_ONE FATEFUL DAY.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_ONE FATEFUL DAY.webp",
+  "l": 18.066,
+  "t": 13.285,
+  "w": 25.391,
+  "h": 6.844
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_ONE FAITHFUL DAY.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_ONE FAITHFUL DAY.webp",
+  "l": 18.31,
+  "t": 12.873,
+  "w": 25.262,
+  "h": 6.554
+ },
+ "/assets/comic/S2P1/English/ENG_THEY SEARCHED EVERYWHERE.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_THEY SEARCHED EVERYWHERE.webp",
+  "l": 27.686,
+  "t": 22.142,
+  "w": 18.018,
+  "h": 6.2
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_THEY SEARCHED EVERYWHERE.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_THEY SEARCHED EVERYWHERE.webp",
+  "l": 27.976,
+  "t": 21.664,
+  "w": 17.857,
+  "h": 5.965
+ },
+ "/assets/comic/S2P1/English/ENG_AND BELOW.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_AND BELOW.webp",
+  "l": 69.287,
+  "t": 67.069,
+  "w": 12.939,
+  "h": 5.636
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_AND BELOW.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_AND BELOW.webp",
+  "l": 69.571,
+  "t": 66.601,
+  "w": 12.81,
+  "h": 5.377
+ },
+ "/assets/comic/S2P1/English/ENG_BUT FOUND NOTHING.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_BUT FOUND NOTHING.webp",
+  "l": 72.021,
+  "t": 73.913,
+  "w": 17.969,
+  "h": 6.119
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_BUT FOUND NOTHING.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_BUT FOUND NOTHING.webp",
+  "l": 72.31,
+  "t": 73.43,
+  "w": 17.786,
+  "h": 5.848
+ },
+ "/assets/comic/S2P1/English/ENG_UNTIL.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_UNTIL.webp",
+  "l": 82.178,
+  "t": 81.562,
+  "w": 10.059,
+  "h": 5.797
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_UNTIL.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_UNTIL.webp",
+  "l": 82.429,
+  "t": 81.044,
+  "w": 9.952,
+  "h": 5.573
+ },
+ "/assets/comic/S2P1/English/ENG_HE SPOTTED SOMETHING.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_HE SPOTTED SOMETHING.webp",
+  "l": 55.738,
+  "t": 17.347,
+  "w": 9.833,
+  "h": 7.261
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_HE SPOTTED SOMETHING.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_HE SPOTTED SOMETHING.webp",
+  "l": 55.738,
+  "t": 17.347,
+  "w": 9.833,
+  "h": 7.261
+ },
+ "/assets/comic/S2P1/English/ENG_A PIECE OF FISH MEAT.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_A PIECE OF FISH MEAT.webp",
+  "l": 49.976,
+  "t": 64.05,
+  "w": 10.452,
+  "h": 24.215
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_A PIECE OF MEAT.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_A PIECE OF MEAT.webp",
+  "l": 49.976,
+  "t": 64.05,
+  "w": 10.452,
+  "h": 27.826
+ },
+ "/assets/comic/S2P1/English/ENG_WITH NO HESITATION.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_WITH NO HESITATION.webp",
+  "l": 49.405,
+  "t": 8.987,
+  "w": 18.548,
+  "h": 7.771
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_WITH NO HESISTATION.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_WITH NO HESISTATION.webp",
+  "l": 49.405,
+  "t": 8.987,
+  "w": 19.738,
+  "h": 7.771
+ },
+ "/assets/comic/S2P1/English/ENG_DRIVEN BY HUNGER.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_DRIVEN BY HUNGER.webp",
+  "l": 45.786,
+  "t": 64.129,
+  "w": 16.786,
+  "h": 9.733
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_DRIVEN BY HUNGER.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_DRIVEN BY HUNGER.webp",
+  "l": 45.786,
+  "t": 64.129,
+  "w": 16.786,
+  "h": 9.733
+ },
+ "/assets/comic/S2P1/English/ENG_THEN A BIG ONE.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_THEN A BIG ONE.webp",
+  "l": 69.905,
+  "t": 10.165,
+  "w": 6.571,
+  "h": 15.11
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_THEN A BIG ONE.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_THEN A BIG ONE.webp",
+  "l": 69.905,
+  "t": 10.165,
+  "w": 6.571,
+  "h": 15.11
+ },
+ "/assets/comic/S2P1/English/ENG_THEN AN EVEN BIGGER ONE.webp": {
+  "f": "/assets/captions/S2P1/English/ENG_THEN AN EVEN BIGGER ONE.webp",
+  "l": 65.952,
+  "t": 62.52,
+  "w": 6.571,
+  "h": 15.11
+ },
+ "/assets/comic/S2P1/Pampanga/PAM_THEN AN EVEN BIGGER ONE.webp": {
+  "f": "/assets/captions/S2P1/Pampanga/PAM_THEN AN EVEN BIGGER ONE.webp",
+  "l": 65.952,
+  "t": 62.52,
+  "w": 6.571,
+  "h": 15.11
+ },
+ "/assets/comic/S2P2/English/ENG_SUCH A COUREOUS FEAT.webp": {
+  "f": "/assets/captions/S2P2/English/ENG_SUCH A COUREOUS FEAT.webp",
+  "l": 16.31,
+  "t": 3.65,
+  "w": 8.476,
+  "h": 18.603
+ },
+ "/assets/comic/S2P2/Pampanga/PAM_SUCH A COUREOUS FEAT.webp": {
+  "f": "/assets/captions/S2P2/Pampanga/PAM_SUCH A COUREOUS FEAT.webp",
+  "l": 16.31,
+  "t": 3.65,
+  "w": 8.476,
+  "h": 18.603
+ },
+ "/assets/comic/S2P2/English/ENG_SALAKSAK A NAME.webp": {
+  "f": "/assets/captions/S2P2/English/ENG_SALAKSAK A NAME.webp",
+  "l": 3.619,
+  "t": 74.372,
+  "w": 8.81,
+  "h": 20.918
+ },
+ "/assets/comic/S2P2/Pampanga/PAM_SALAKSAK A NAME.webp": {
+  "f": "/assets/captions/S2P2/Pampanga/PAM_SALAKSAK A NAME.webp",
+  "l": 3.619,
+  "t": 74.372,
+  "w": 8.81,
+  "h": 20.918
+ },
+ "/assets/comic/S2P2/English/ENG_UNTIL SUDDENLY.webp": {
+  "f": "/assets/captions/S2P2/English/ENG_UNTIL SUDDENLY.webp",
+  "l": 45.405,
+  "t": 5.22,
+  "w": 14.429,
+  "h": 5.024
+ },
+ "/assets/comic/S2P2/Pampanga/PAM_UNTIL SUDDENLY.webp": {
+  "f": "/assets/captions/S2P2/Pampanga/PAM_UNTIL SUDDENLY.webp",
+  "l": 45.405,
+  "t": 5.22,
+  "w": 14.429,
+  "h": 5.024
+ },
+ "/assets/comic/S2P3/English/ENG_SALAKSAKS FORM.webp": {
+  "f": "/assets/captions/S2P3/English/ENG_SALAKSAKS FORM.webp",
+  "l": 44.571,
+  "t": 5.534,
+  "w": 12.81,
+  "h": 32.81
+ },
+ "/assets/comic/S2P3/Pampanga/PAM_SALAKSAKS FORM.webp": {
+  "f": "/assets/captions/S2P3/Pampanga/PAM_SALAKSAKS FORM.webp",
+  "l": 44.571,
+  "t": 5.534,
+  "w": 12.81,
+  "h": 32.81
+ },
+ "/assets/comic/s3p1/English/ENG_ALDO THE SUN.webp": {
+  "f": "/assets/captions/s3p1/English/ENG_ALDO THE SUN.webp",
+  "l": 3.595,
+  "t": 6.122,
+  "w": 15.286,
+  "h": 6.829
+ },
+ "/assets/comic/s3p1/Pampanga/PAM_ALDO THE SUN.webp": {
+  "f": "/assets/captions/s3p1/Pampanga/PAM_ALDO THE SUN.webp",
+  "l": 3.595,
+  "t": 6.122,
+  "w": 15.286,
+  "h": 6.829
+ },
+ "/assets/comic/s3p1/English/ENG_AND BULAN THE MOON.webp": {
+  "f": "/assets/captions/s3p1/English/ENG_AND BULAN THE MOON.webp",
+  "l": 67.048,
+  "t": 88.893,
+  "w": 15.69,
+  "h": 7.378
+ },
+ "/assets/comic/s3p1/Pampanga/PAM_AND BULAN THE MOON.webp": {
+  "f": "/assets/captions/s3p1/Pampanga/PAM_AND BULAN THE MOON.webp",
+  "l": 67.048,
+  "t": 88.893,
+  "w": 15.69,
+  "h": 7.378
+ },
+ "/assets/comic/s3p1/English/ENG_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p1/English/ENG_FOOTNOTE.webp",
+  "l": 3.762,
+  "t": 80.181,
+  "w": 46.929,
+  "h": 14.757
+ },
+ "/assets/comic/s3p1/Pampanga/PAM_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p1/Pampanga/PAM_FOOTNOTE.webp",
+  "l": 3.762,
+  "t": 80.181,
+  "w": 51.952,
+  "h": 14.757
+ },
+ "/assets/comic/s3p2/English 2.1/ENG_IN TIMES PAST.webp": {
+  "f": "/assets/captions/s3p2/English 2.1/ENG_IN TIMES PAST.webp",
+  "l": 9.786,
+  "t": 41.287,
+  "w": 9.762,
+  "h": 21.193
+ },
+ "/assets/comic/s3p2/Pampanga 2.1/PAM_IN TIMES PAST.webp": {
+  "f": "/assets/captions/s3p2/Pampanga 2.1/PAM_IN TIMES PAST.webp",
+  "l": 9.786,
+  "t": 41.287,
+  "w": 9.762,
+  "h": 21.193
+ },
+ "/assets/comic/s3p2/English 2.1/ENG_BUT WITH SALAKSAKS SOUL.webp": {
+  "f": "/assets/captions/s3p2/English 2.1/ENG_BUT WITH SALAKSAKS SOUL.webp",
+  "l": 80.524,
+  "t": 39.482,
+  "w": 11.238,
+  "h": 25.942
+ },
+ "/assets/comic/s3p2/Pampanga 2.1/PAM_BUT WITH SALAKSAKS SOUL.webp": {
+  "f": "/assets/captions/s3p2/Pampanga 2.1/PAM_BUT WITH SALAKSAKS SOUL.webp",
+  "l": 80.524,
+  "t": 39.482,
+  "w": 12.619,
+  "h": 25.942
+ },
+ "/assets/comic/s3p2/English 2.1/ENG_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p2/English 2.1/ENG_FOOTNOTE.webp",
+  "l": 2.905,
+  "t": 85.479,
+  "w": 32.976,
+  "h": 11.264
+ },
+ "/assets/comic/s3p2/Pampanga 2.1/PAM_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p2/Pampanga 2.1/PAM_FOOTNOTE.webp",
+  "l": 2.905,
+  "t": 85.4,
+  "w": 34.167,
+  "h": 11.342
+ },
+ "/assets/comic/s3p2/English 2.2/ENG_THE TWO GODS.webp": {
+  "f": "/assets/captions/s3p2/English 2.2/ENG_THE TWO GODS.webp",
+  "l": 38.024,
+  "t": 78.336,
+  "w": 27.905,
+  "h": 11.852
+ },
+ "/assets/comic/s3p2/Pampanga 2.2/PAM_THE TWO GODS.webp": {
+  "f": "/assets/captions/s3p2/Pampanga 2.2/PAM_THE TWO GODS.webp",
+  "l": 38.024,
+  "t": 78.336,
+  "w": 27.905,
+  "h": 11.852
+ },
+ "/assets/comic/s3p3/English/ENG_BUT SINCE THE BATTLE.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_BUT SINCE THE BATTLE.webp",
+  "l": 8.929,
+  "t": 30.377,
+  "w": 14.857,
+  "h": 34.262
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_BUT SINCE THE BATTLE.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_BUT SINCE THE BATTLE.webp",
+  "l": 8.738,
+  "t": 30.259,
+  "w": 15.071,
+  "h": 34.419
+ },
+ "/assets/comic/s3p3/English/ENG_THEIR FLAMES TURNED INTO FLESH.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_THEIR FLAMES TURNED INTO FLESH.webp",
+  "l": 59.31,
+  "t": 15.267,
+  "w": 9.048,
+  "h": 19.78
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_THEIR FLAMES TURNED INTO FLESH.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_THEIR FLAMES TURNED INTO FLESH.webp",
+  "l": 59.214,
+  "t": 15.188,
+  "w": 9.238,
+  "h": 19.741
+ },
+ "/assets/comic/s3p3/English/ENG_AND THEY WERE AS TALL.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_AND THEY WERE AS TALL.webp",
+  "l": 78.095,
+  "t": 70.408,
+  "w": 9.952,
+  "h": 21.35
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_THEY WERE AS TALL.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_THEY WERE AS TALL.webp",
+  "l": 78.095,
+  "t": 70.408,
+  "w": 9.952,
+  "h": 21.35
+ },
+ "/assets/comic/s3p3/English/ENG_WITH IT THEY GAIN NEW NAMES.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_WITH IT THEY GAIN NEW NAMES.webp",
+  "l": 2.667,
+  "t": 14.6,
+  "w": 13.238,
+  "h": 7.496
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_WITH IT THEY GAIN NEW NAMES.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_WITH IT THEY GAIN NEW NAMES.webp",
+  "l": 2.667,
+  "t": 14.6,
+  "w": 13.238,
+  "h": 7.496
+ },
+ "/assets/comic/s3p3/English/ENG_ALDO BECAME APUNG SUKU.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_ALDO BECAME APUNG SUKU.webp",
+  "l": 79.952,
+  "t": 18.838,
+  "w": 17.905,
+  "h": 6.515
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_ALDO BECAME APUNG SUKU.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_ALDO BECAME APUNG SUKU.webp",
+  "l": 79.667,
+  "t": 18.838,
+  "w": 18.929,
+  "h": 6.515
+ },
+ "/assets/comic/s3p3/English/ENG_BULAN BECAME APUNG MALLARI.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_BULAN BECAME APUNG MALLARI.webp",
+  "l": 6,
+  "t": 76.256,
+  "w": 23.357,
+  "h": 5.769
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_BULAN BECAME APUNG MALLARI.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_BULAN BECAME APUNG MALLARI.webp",
+  "l": 6,
+  "t": 76.256,
+  "w": 23.357,
+  "h": 5.769
+ },
+ "/assets/comic/s3p3/English/ENG_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p3/English/ENG_FOOTNOTE.webp",
+  "l": 67.31,
+  "t": 88.069,
+  "w": 32.167,
+  "h": 11.303
+ },
+ "/assets/comic/s3p3/Pampanga/PAM_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p3/Pampanga/PAM_FOOTNOTE.webp",
+  "l": 65.429,
+  "t": 87.323,
+  "w": 33.643,
+  "h": 11.303
+ },
+ "/assets/comic/s3p4/English/ENG_THEY CONTINUED THEIR FIGHT.webp": {
+  "f": "/assets/captions/s3p4/English/ENG_THEY CONTINUED THEIR FIGHT.webp",
+  "l": 4,
+  "t": 68.642,
+  "w": 12.81,
+  "h": 26.413
+ },
+ "/assets/comic/s3p4/Pampanga/PAM_THEY CONTINUED.webp": {
+  "f": "/assets/captions/s3p4/Pampanga/PAM_THEY CONTINUED.webp",
+  "l": 4,
+  "t": 68.642,
+  "w": 12.81,
+  "h": 26.413
+ },
+ "/assets/comic/s3p4/English/ENG_FROM THE VALLEYS.webp": {
+  "f": "/assets/captions/s3p4/English/ENG_FROM THE VALLEYS.webp",
+  "l": 57.667,
+  "t": 12.991,
+  "w": 13.619,
+  "h": 5.181
+ },
+ "/assets/comic/s3p4/Pampanga/PAM_FROM THE VALLEYS.webp": {
+  "f": "/assets/captions/s3p4/Pampanga/PAM_FROM THE VALLEYS.webp",
+  "l": 57.667,
+  "t": 12.991,
+  "w": 13.619,
+  "h": 5.181
+ },
+ "/assets/comic/s3p4/English/ENG_DOWN THROUGH THE PLAINS.webp": {
+  "f": "/assets/captions/s3p4/English/ENG_DOWN THROUGH THE PLAINS.webp",
+  "l": 59.952,
+  "t": 58.556,
+  "w": 13.857,
+  "h": 8.83
+ },
+ "/assets/comic/s3p4/Pampanga/PAM_DOWN THROUGH THE PLAINS.webp": {
+  "f": "/assets/captions/s3p4/Pampanga/PAM_DOWN THROUGH THE PLAINS.webp",
+  "l": 59.952,
+  "t": 58.556,
+  "w": 13.857,
+  "h": 8.83
+ },
+ "/assets/comic/s3p4/English/ENG_TO THE BEACHES.webp": {
+  "f": "/assets/captions/s3p4/English/ENG_TO THE BEACHES.webp",
+  "l": 33.952,
+  "t": 84.969,
+  "w": 13.024,
+  "h": 5.73
+ },
+ "/assets/comic/s3p4/Pampanga/PAM_TO THE BEACHES.webp": {
+  "f": "/assets/captions/s3p4/Pampanga/PAM_TO THE BEACHES.webp",
+  "l": 33.952,
+  "t": 84.969,
+  "w": 13.024,
+  "h": 5.73
+ },
+ "/assets/comic/s3p4/English/ENG_Their battle unceasing, neither willing to back down.webp": {
+  "f": "/assets/captions/s3p4/English/ENG_Their battle unceasing, neither willing to back down.webp",
+  "l": 78.762,
+  "t": 2.904,
+  "w": 10.976,
+  "h": 21.35
+ },
+ "/assets/comic/s3p4/Pampanga/PAM_Their battle unceasing, neither willing to back down.webp": {
+  "f": "/assets/captions/s3p4/Pampanga/PAM_Their battle unceasing, neither willing to back down.webp",
+  "l": 78.762,
+  "t": 2.904,
+  "w": 10.976,
+  "h": 21.35
+ },
+ "/assets/comic/s3p5/English/1_UNTIL SUDDENLY.webp": {
+  "f": "/assets/captions/s3p5/English/1_UNTIL SUDDENLY.webp",
+  "l": 22.214,
+  "t": 1.57,
+  "w": 14.333,
+  "h": 4.67
+ },
+ "/assets/comic/s3p5/Pampanga/1 HANGGANG BIGLA.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/1 HANGGANG BIGLA.webp",
+  "l": 22.214,
+  "t": 1.57,
+  "w": 14.333,
+  "h": 4.67
+ },
+ "/assets/comic/s3p5/English/2_INDUNG TIBUAN MOVED.webp": {
+  "f": "/assets/captions/s3p5/English/2_INDUNG TIBUAN MOVED.webp",
+  "l": 1.524,
+  "t": 51.452,
+  "w": 12.405,
+  "h": 7.457
+ },
+ "/assets/comic/s3p5/Pampanga/2 INDUNG TIBUAN MIGLIPAT YA.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/2 INDUNG TIBUAN MIGLIPAT YA.webp",
+  "l": 1.524,
+  "t": 51.452,
+  "w": 12.405,
+  "h": 7.457
+ },
+ "/assets/comic/s3p5/English/3_APUNG MALLARI SUDDENLY LOST HER BALANCE AND FELL.webp": {
+  "f": "/assets/captions/s3p5/English/3_APUNG MALLARI SUDDENLY LOST HER BALANCE AND FELL.webp",
+  "l": 5.786,
+  "t": 85.675,
+  "w": 18.643,
+  "h": 9.969
+ },
+ "/assets/comic/s3p5/Pampanga/3 BIGLA YANG MEWALAN TIMBANGAN I APUNG MALLARI AT MIRAGSA YA.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/3 BIGLA YANG MEWALAN TIMBANGAN I APUNG MALLARI AT MIRAGSA YA.webp",
+  "l": 5.786,
+  "t": 85.675,
+  "w": 18.643,
+  "h": 9.969
+ },
+ "/assets/comic/s3p5/English/4_AND WITHOUT A SECOND THOUGHT APUNG SUKU STRUCK MALLARI IN THE EYE.webp": {
+  "f": "/assets/captions/s3p5/English/4_AND WITHOUT A SECOND THOUGHT APUNG SUKU STRUCK MALLARI IN THE EYE.webp",
+  "l": 47.357,
+  "t": 2.63,
+  "w": 10.905,
+  "h": 18.485
+ },
+ "/assets/comic/s3p5/Pampanga/4 AT ALANG KADUANG PAMISIP TIGLUS NENG APUNG SUKU KING MATA I MALLARI.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/4 AT ALANG KADUANG PAMISIP TIGLUS NENG APUNG SUKU KING MATA I MALLARI.webp",
+  "l": 47.357,
+  "t": 2.63,
+  "w": 10.905,
+  "h": 18.485
+ },
+ "/assets/comic/s3p5/English/5_APUNG MALLARI SHRIEKED IN PAIN.webp": {
+  "f": "/assets/captions/s3p5/English/5_APUNG MALLARI SHRIEKED IN PAIN.webp",
+  "l": 76.952,
+  "t": 12.52,
+  "w": 13.024,
+  "h": 9.655
+ },
+ "/assets/comic/s3p5/Pampanga/5 GULISAK YA KING SAKIT I APUNG MALLARI.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/5 GULISAK YA KING SAKIT I APUNG MALLARI.webp",
+  "l": 76.952,
+  "t": 12.52,
+  "w": 13.024,
+  "h": 9.655
+ },
+ "/assets/comic/s3p5/English/6_HER LIGHT BEGAN TO DIM.webp": {
+  "f": "/assets/captions/s3p5/English/6_HER LIGHT BEGAN TO DIM.webp",
+  "l": 81.19,
+  "t": 23.587,
+  "w": 13.024,
+  "h": 9.655
+ },
+ "/assets/comic/s3p5/Pampanga/6 ING SULU NA MEGUMPISA YANG MEWALA.webp": {
+  "f": "/assets/captions/s3p5/Pampanga/6 ING SULU NA MEGUMPISA YANG MEWALA.webp",
+  "l": 81.19,
+  "t": 23.587,
+  "w": 13.024,
+  "h": 9.655
+ },
+ "/assets/comic/s3p7/English/1 FROM THAT DAY ON THE TWO GODS AGREED TO DIVIDE THE HEAVENS.webp": {
+  "f": "/assets/captions/s3p7/English/1 FROM THAT DAY ON THE TWO GODS AGREED TO DIVIDE THE HEAVENS.webp",
+  "l": 3.143,
+  "t": 4.003,
+  "w": 12.167,
+  "h": 19.702
+ },
+ "/assets/comic/s3p7/Pampanga/1 MANIBAT KING ALDONG ITA.webp": {
+  "f": "/assets/captions/s3p7/Pampanga/1 MANIBAT KING ALDONG ITA.webp",
+  "l": 3.143,
+  "t": 4.003,
+  "w": 12.167,
+  "h": 19.702
+ },
+ "/assets/comic/s3p7/English/2 THUS THEY EARNED NEW NAMES.webp": {
+  "f": "/assets/captions/s3p7/English/2 THUS THEY EARNED NEW NAMES.webp",
+  "l": 16.119,
+  "t": 15.385,
+  "w": 15.524,
+  "h": 29.199
+ },
+ "/assets/comic/s3p7/Pampanga/2 MAKANYAN MIKA BAYUNG LAGYA LA.webp": {
+  "f": "/assets/captions/s3p7/Pampanga/2 MAKANYAN MIKA BAYUNG LAGYA LA.webp",
+  "l": 16.119,
+  "t": 15.385,
+  "w": 15.524,
+  "h": 29.199
+ },
+ "/assets/comic/s3p7/English/3 AND APUNG MALLARI BECAME APUNG PUNSALANG.webp": {
+  "f": "/assets/captions/s3p7/English/3 AND APUNG MALLARI BECAME APUNG PUNSALANG.webp",
+  "l": 71.048,
+  "t": 42.386,
+  "w": 14.619,
+  "h": 26.805
+ },
+ "/assets/comic/s3p7/Pampanga/3 AT APUNG MALLARI MEGING YANG APUNG PUNSALANG.webp": {
+  "f": "/assets/captions/s3p7/Pampanga/3 AT APUNG MALLARI MEGING YANG APUNG PUNSALANG.webp",
+  "l": 71.048,
+  "t": 42.386,
+  "w": 14.619,
+  "h": 26.805
+ },
+ "/assets/comic/s3p7/English/FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p7/English/FOOTNOTE.webp",
+  "l": 48.857,
+  "t": 77.747,
+  "w": 47.714,
+  "h": 14.6
+ },
+ "/assets/comic/s3p7/Pampanga/FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p7/Pampanga/FOOTNOTE.webp",
+  "l": 48.857,
+  "t": 77.747,
+  "w": 47.714,
+  "h": 14.6
+ },
+ "/assets/comic/s3p8/English/ENG_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION BOX.webp": {
+  "f": "/assets/captions/s3p8/English/ENG_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION BOX.webp",
+  "l": 14.048,
+  "t": 17.857,
+  "w": 72.024,
+  "h": 67.543
+ },
+ "/assets/comic/s3p8/Pampanga/PAM_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION.webp": {
+  "f": "/assets/captions/s3p8/Pampanga/PAM_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION.webp",
+  "l": 8.833,
+  "t": 9.812,
+  "w": 82.452,
+  "h": 80.495
+ },
+ "/assets/comic/s3p8/English/ENG_Meanwhile, Apung Punsalang retreated to Mount Pinatubo.webp": {
+  "f": "/assets/captions/s3p8/English/ENG_Meanwhile, Apung Punsalang retreated to Mount Pinatubo.webp",
+  "l": 75.762,
+  "t": 48.234,
+  "w": 21.167,
+  "h": 11.774
+ },
+ "/assets/comic/s3p8/Pampanga/PAM_Samantalang i Apung Punsalang minatras ya king Bunduk Pinatubu.webp": {
+  "f": "/assets/captions/s3p8/Pampanga/PAM_Samantalang i Apung Punsalang minatras ya king Bunduk Pinatubu.webp",
+  "l": 73.381,
+  "t": 48.234,
+  "w": 23.643,
+  "h": 11.774
+ },
+ "/assets/comic/s3p8/English/ENG_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p8/English/ENG_FOOTNOTE.webp",
+  "l": 1.548,
+  "t": 81.279,
+  "w": 41.405,
+  "h": 15.188
+ },
+ "/assets/comic/s3p8/Pampanga/PAM_FOOTNOTE.webp": {
+  "f": "/assets/captions/s3p8/Pampanga/PAM_FOOTNOTE.webp",
+  "l": 1.548,
+  "t": 81.279,
+  "w": 45.81,
+  "h": 15.188
+ },
+ "/assets/comic/s3p8/English/THE END.webp": {
+  "f": "/assets/captions/s3p8/English/THE END.webp",
+  "l": 91.5,
+  "t": 94.231,
+  "w": 6.119,
+  "h": 2.041
+ },
+ "/assets/comic/s3p8/Pampanga/DULU.webp": {
+  "f": "/assets/captions/s3p8/Pampanga/DULU.webp",
+  "l": 93.286,
+  "t": 94.27,
+  "w": 3.976,
+  "h": 2.041
+ }
+}

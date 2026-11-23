@@ -49,6 +49,10 @@ function bootstrap() {
 
   // 2. Initialise audio (loads persisted settings from localStorage)
   AudioManager.init();
+  // About and Credits are laid out once at 1280x720 and scaled to the screen (--k), so they look the same on every device
+  const setScale = () => document.documentElement.style.setProperty('--k', Math.min(window.innerWidth / 1280, window.innerHeight / 720).toFixed(4));
+  setScale();
+  window.addEventListener('resize', setScale);
   initAssetGuard();   // failed pictures and videos are asked for again
   initUiSounds();   // hover and click sounds on every button
 

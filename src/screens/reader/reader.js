@@ -4,6 +4,18 @@ import { AudioManager } from '../../audio/AudioManager.js';
 import { toggleSettings } from '../../components/settings/settings.js';
 import { pages } from '../../data/story.js';
 import { captionSrc } from '../../utils/language.js';
+import captionBounds from '../../data/caption-bounds.json';   // cropped caption pictures and where each sits on the frame (scripts/crop-captions.cjs)
+
+/** The picture to load for a caption and its place on the frame (%): the small cropped copy when there is one. */
+function captionAsset(c) {
+  const orig = captionSrc(c);
+  const b = captionBounds[orig];
+  return b ? { src: b.f, box: b } : { src: orig, box: null };
+}
+function captionAttrs(c) {
+  const { src, box } = captionAsset(c);
+  return `data-src="${encodeURI(src)}"` + (box ? ` data-l="${box.l}" data-t="${box.t}" data-bw="${box.w}" data-bh="${box.h}" style="position:absolute;left:${box.l}%;top:${box.t}%;width:${box.w}%;height:${box.h}%"` : '');
+}
 
 const PRELOAD_AHEAD = 2;
 
@@ -14,8 +26,15 @@ document.addEventListener('language:change', () => {
       const c = pages[i]?.captions?.[Number(img.dataset.captionIndex)];
       if (!c) return;
       img._panel = null;                                   // the new picture has its own measurements
+      const a = captionAsset(c);
+      img.dataset.src = encodeURI(a.src);
+      if (a.box) {
+        Object.assign(img.dataset, { l: a.box.l, t: a.box.t, bw: a.box.w, bh: a.box.h });
+        img.style.cssText = `position:absolute;left:${a.box.l}%;top:${a.box.t}%;width:${a.box.w}%;height:${a.box.h}%`;
+      }
+      if (!img.getAttribute('src')) return;                // not fetched yet: it will load in the new language
       img.addEventListener('load', () => layoutCaptions(pe), { once: true });
-      img.src = encodeURI(captionSrc(c));
+      img.src = img.dataset.src;
     });
   });
 });
@@ -47,14 +66,14 @@ function buildPageEl(page, index) {
   if (page.video) {
     el.classList.add('reader-page--video');
     el.innerHTML = `
-      <canvas class="reader-page-ambient" width="64" height="36" aria-hidden="true"></canvas>
+      <canvas class="reader-page-ambient" width="32" height="18" aria-hidden="true"></canvas>
       <div class="reader-page-media"${page.videoFit === 'contain' ? ' data-fit="contain"' : ''}${page.videoAspect ? ` style="--video-ar:${page.videoAspect}${page.videoFocusY != null ? `;--focus-y:${page.videoFocusY}` : ''}"` : ''}>
         <video class="reader-page-video" src="${encodeURI(page.video)}" ${page.videoSound ? '' : 'muted'} ${page.advanceAfter == null ? 'loop' : ''} playsinline
                preload="${index === 0 ? 'auto' : 'metadata'}" aria-label="${page.alt || `Page ${index + 1}`}"></video>
         <div class="reader-caption-frame">
           ${(page.captions || []).map((c, i) => `
-            <div class="reader-caption" data-at-x="${c.at.x}" data-at-y="${c.at.y}" data-scale="${c.scale ?? 1}">
-              <img class="reader-page-caption" src="${encodeURI(captionSrc(c))}" alt="${c.alt}" data-caption-index="${i}" draggable="false" decoding="async">
+            <div class="reader-caption" data-at-x="${c.at.x}" data-at-y="${c.at.y}" data-scale="${c.scale ?? 1}"${c.at.edge ? ` data-anchor="${c.at.edge}"` : ''}>
+              <img class="reader-page-caption" ${captionAttrs(c)} alt="${c.alt}" data-caption-index="${i}" draggable="false" decoding="async">
             </div>`).join('')}
         </div>
       </div>`;
@@ -177,7 +196,7 @@ function startAmbient() {
     try { cv.getContext('2d').drawImage(v, 0, 0, cv.width, cv.height); } catch { /* frame not ready */ }
   };
   draw();
-  ambientTimer = setInterval(draw, 150);
+  ambientTimer = setInterval(draw, 400);
 }
 
 export function mountReader(el) {
@@ -404,6 +423,10 @@ function playPageVideo(idx) {
  */
 function measurePanel(img) {
   if (img._panel) return img._panel;
+  if (img.dataset.bw) {                                 // cropped picture: its place on the frame is known
+    const l = +img.dataset.l, t = +img.dataset.t, w = +img.dataset.bw, h = +img.dataset.bh;
+    return (img._panel = { cx: l + w / 2, cy: t + h / 2, w, h });
+  }
   const W = 400, H = Math.max(1, Math.round(W * img.naturalHeight / img.naturalWidth));
   const canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
@@ -445,14 +468,16 @@ function layoutCaptions(pe) {
     const p = measurePanel(img);
     const ax = Number(wrap.dataset.atX), ay = Number(wrap.dataset.atY), k = Number(wrap.dataset.scale) || 1;
     const pw = p.w * k, ph = p.h * k;                   // size on screen, after the optional shrink
-    const left = fr.left + (ax - pw / 2) / 100 * fr.width;
+    // at.edge: 'left' (or 'right') means x is the box's LEFT (or RIGHT) edge (so boxes of different widths, e.g. English and Kapampangan, line up on the left)
+    const axc = wrap.dataset.anchor === 'left' ? ax + pw / 2 : wrap.dataset.anchor === 'right' ? ax - pw / 2 : ax;
+    const left = fr.left + (axc - pw / 2) / 100 * fr.width;
     const top = fr.top + (ay - ph / 2) / 100 * fr.height;
     const nx = nudge(left, left + pw / 100 * fr.width, mr.left + mx, mr.right - mx);
     const ny = nudge(top, top + ph / 100 * fr.height, mr.top + my, mr.bottom - my);
     wrap.style.transformOrigin = `${p.cx}% ${p.cy}%`;   // shrink around the panel's own centre
     wrap.style.scale = k === 1 ? '' : String(k);
     // percentages are of the frame (the wrapper is frame-sized), then the px nudge
-    wrap.style.translate = `calc(${(ax - p.cx).toFixed(3)}% + ${nx.toFixed(1)}px) calc(${(ay - p.cy).toFixed(3)}% + ${ny.toFixed(1)}px)`;
+    wrap.style.translate = `calc(${(axc - p.cx).toFixed(3)}% + ${nx.toFixed(1)}px) calc(${(ay - p.cy).toFixed(3)}% + ${ny.toFixed(1)}px)`;
   });
 }
 
@@ -568,7 +593,7 @@ function updateUI({ prevBtn, nextBtn, progFill }) {
 
   if (prevBtn) prevBtn.disabled = i === 0;
   if (nextBtn) nextBtn.disabled = false; // last page leads to minigame, never disabled
-  if (progFill) progFill.style.setProperty('--progress', `${pct}%`);
+  if (progFill) progFill.style.setProperty('--p', String(pct / 100));
 
 }
 
@@ -714,8 +739,18 @@ function setHold(el, on) {
   btn?.setAttribute('aria-pressed', String(on));
 }
 
+/** Caption pictures are big (frame-sized), so only the current page and the next ones are fetched, not all of them at once. */
+function loadCaptions(pe) {
+  pe?.querySelectorAll('.reader-page-caption').forEach(img => {
+    if (!img.getAttribute('src') && img.dataset.src) img.src = img.dataset.src;
+  });
+}
+
 function preloadAhead(idx) {
+  loadCaptions(pageEls[idx]);
+  loadCaptions(pageEls[idx - 1]);
   for (let i = idx + 1; i <= idx + PRELOAD_AHEAD && i < pages.length; i++) {
+    loadCaptions(pageEls[i]);
     const img = pageEls[i]?.querySelector('.reader-page-img');
     if (img && !img.src) img.src = pages[i].image;
     const video = pageEls[i]?.querySelector('video');

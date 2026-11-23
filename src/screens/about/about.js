@@ -7,6 +7,7 @@ export function createAboutScreen() {
   el.dataset.screen = '#about';
 
   el.innerHTML = `
+    <div class="about-stage">
     <div class="about-image-wrap">
       <img class="about-image loaded" src="/assets/ui/about-team.webp" alt="Áyup Production team" />
     </div>
@@ -23,10 +24,10 @@ export function createAboutScreen() {
         culturally rooted.
       </p>
     </div>
+    </div>
 
     <button class="screen-back-btn" aria-label="Go back to home">
-      <img src="/assets/ui/NEXT BUTTON.png" class="nav-arrow-img nav-arrow-flip" alt="" aria-hidden="true" draggable="false"/>
-      <span class="screen-back-label">Back</span>
+      <img src="/assets/ui/Icon/BACK.png" class="screen-back-icon" alt="" aria-hidden="true" draggable="false"/>
     </button>
   `;
 

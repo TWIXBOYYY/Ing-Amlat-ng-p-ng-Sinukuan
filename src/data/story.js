@@ -345,7 +345,7 @@ export const pages = [
       { src: '/assets/narration/s2p2/S2-P2-PANEL3-NARRATOR-001.2.wav' },
     ],
     advanceAfter: 3,
-    videoSeconds: 27.5,   // the video is 24.2s: its last frame holds for 3s, then the page turns
+    videoSeconds: 17.1,   // "Until suddenly" is spoken at ~10.9-12.3s; the page turns 4.5s after those words (about 16.8s), before the 24.2s video ends
     // Boxes stay once shown (none clears): "Such a courageous feat" when the voice starts (0:00.7) and "Salaksak, a name" at 0:04.5 on the left,
     // "Until suddenly" on the right as the first audio finishes (the second audio starts)
     captions: [
@@ -371,24 +371,23 @@ export const pages = [
     narrationDelay: 6,
     narration: [
       { src: '/assets/narration/s2p3/S2-P3-NARRATOR-001.wav' },
-      { src: '/assets/narration/s2p3/S2-P3-NARRATOR-002.wav' },
     ],
     advanceAfter: 3,
-    videoSeconds: 30,
-    // One box, top centre of the frame (where the layout puts it); it appears at 0:06, when the first voice clip starts
+    videoSeconds: 25,   // the growl plays 17.8-22.2s; the page turns 2.5s after it ends (about 24.7s), before the 30s video ends
+    // One box, top centre of the frame (where the layout puts it); it appears at 0:07.2, where the voice starts (the clip starts at 0:06)
     captions: [
       {
         src: '/assets/comic/S2P3/English/ENG_SALAKSAKS FORM.webp',
         srcByLang: { pam: '/assets/comic/S2P3/Pampanga/PAM_SALAKSAKS FORM.webp' },
         alt: "Salaksak's form.",
-        at: { x: 50.5, y: 22.9 }, clip: 0, voiceAt: 0, fallbackAt: 6,
+        at: { x: 50.5, y: 22.9 }, clip: 0, voiceAt: 1.2, fallbackAt: 7.2,
       },
     ],
-    // The phoenix roar and the shining play at 0:12 of the page; the growl starts with the second voice clip
+    // The phoenix roar and the shining play at 0:12 of the page; the growl plays at 0:17.8, where the (removed) second voice clip used to start
     sfx: [
       { src: '/assets/audio/sfx/s2p3/Phoenix Roars.mp3', on: 'enter', at: 12, volume: 0.6 },
       { src: '/assets/audio/sfx/s2p3/Shining SFX.mp3', on: 'enter', at: 12 },
-      { src: '/assets/audio/sfx/s2p3/Stomach Growling Sound Effect.mp3', on: 'enter', clip: 1, volume: 0.8 },
+      { src: '/assets/audio/sfx/s2p3/Stomach Growling Sound Effect.mp3', on: 'enter', at: 17.8, volume: 0.8 },
     ],
   },
   {
@@ -397,6 +396,16 @@ export const pages = [
     alt: 'Season 3, page 8 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
+    // Layout: "Aldo the Sun" top left, "And Bulan the Moon" bottom right (the Sun and the Moon of the artwork), and the footnote hugging
+    // the bottom-left corner. The voice says Aldo at ~1.0s and Bulan at ~3.9s; the footnote shows with the first box. Boxes stay.
+    captions: [
+      { src: '/assets/comic/s3p1/English/ENG_ALDO THE SUN.webp', srcByLang: { pam: '/assets/comic/s3p1/Pampanga/PAM_ALDO THE SUN.webp' },
+        alt: 'Aldo, the Sun', at: { x: 11.2, y: 9.5 }, clip: 0, voiceAt: 1.0, fallbackAt: 1.2 },
+      { src: '/assets/comic/s3p1/English/ENG_AND BULAN THE MOON.webp', srcByLang: { pam: '/assets/comic/s3p1/Pampanga/PAM_AND BULAN THE MOON.webp' },
+        alt: 'And Bulan, the Moon', at: { x: 74.9, y: 92.6 }, clip: 0, voiceAt: 3.9, fallbackAt: 4 },
+      { src: '/assets/comic/s3p1/English/ENG_FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p1/Pampanga/PAM_FOOTNOTE.webp' },
+        alt: 'Footnote', at: { x: 3.8, y: 87.6, edge: 'left' }, clip: 0, voiceAt: 1.0, fallbackAt: 1.2 },
+    ],
     // One 7.2s clip: the voice runs from ~1.1s to ~5.9s and the file is quiet for its last 1.3s. The page turns 1.5s after
     // the clip ends (about 2.8s after the last word) and does not wait for the rest of the 20s video.
     narration: [
@@ -410,6 +419,19 @@ export const pages = [
     alt: 'Season 3, page 9 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
+    // Part 2.1 boxes, then "The two gods" (part 2.2) at the bottom centre the moment the third voice clip starts: "In times past" top left with the first voice clip (voice ~1.6s),
+    // "But with Salaksak's soul" bottom right with the second clip (voice ~2.3s in), the footnote in the bottom-left corner with the first box.
+    // The boxes stay once shown.
+    captions: [
+      { src: '/assets/comic/s3p2/English 2.1/ENG_IN TIMES PAST.webp', srcByLang: { pam: '/assets/comic/s3p2/Pampanga 2.1/PAM_IN TIMES PAST.webp' },
+        alt: 'In times past...', at: { x: 13.3, y: 14.5 }, scale: 0.8, clip: 0, voiceAt: 1.6, fallbackAt: 1.8 },
+      { src: '/assets/comic/s3p2/English 2.1/ENG_BUT WITH SALAKSAKS SOUL.webp', srcByLang: { pam: '/assets/comic/s3p2/Pampanga 2.1/PAM_BUT WITH SALAKSAKS SOUL.webp' },
+        alt: "But with Salaksak's soul...", at: { x: 74, y: 83 }, scale: 0.8, clip: 1, voiceAt: 2.3, fallbackAt: 9.1 },
+      { src: '/assets/comic/s3p2/English 2.1/ENG_FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p2/Pampanga 2.1/PAM_FOOTNOTE.webp' },
+        alt: 'Footnote', at: { x: 3, y: 91.1, edge: 'left' }, clip: 0, voiceAt: 1.6, fallbackAt: 1.8 },
+      { src: '/assets/comic/s3p2/English 2.2/ENG_THE TWO GODS.webp', srcByLang: { pam: '/assets/comic/s3p2/Pampanga 2.2/PAM_THE TWO GODS.webp' },
+        alt: 'The two gods...', at: { x: 52, y: 84.3 }, clip: 2, voiceAt: 0, fallbackAt: 17 },
+    ],
     // Part 2.1 (two clips) then part 2.2, played whole back to back (6.8 + 10.2 + 8.9s); the video is 30s, so the page turns as it ends
     narration: [
       { src: '/assets/narration/s3p2/s3p2.1/S3-P2.1-NARRATOR-001 (NEW).wav' },
@@ -427,12 +449,33 @@ export const pages = [
     alt: 'Season 3, page 10 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
-    // One clip, played whole; the video is 25s, so the page turns as it ends
+    // Boxes in the order spoken, each where the voice says it (seconds into the one 23s clip, from its voice stretches):
+    // 1.0 "But since the battle...", 8.3 "Their flames...", 11.1 "They were as tall...", 13.8 "And with it...", 16.9 "Aldo became...",
+    // 20.3 "Bulan became..."; the trivia footnote comes in with "And with it..." (13.8). Positions are the ones drawn into the files.
+    // When the second page of the artwork shows up (13.8s) the first three boxes clear away; the rest stay.
+    captions: [
+      { src: '/assets/comic/s3p3/English/ENG_BUT SINCE THE BATTLE.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_BUT SINCE THE BATTLE.webp' },
+        alt: "But since the battle of the two gods cannot be resolved, they continued their battle down to earth.", at: { x: 16.4, y: 47.5 }, clip: 0, voiceAt: 1, fallbackAt: 1 },
+      { src: '/assets/comic/s3p3/English/ENG_THEIR FLAMES TURNED INTO FLESH.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_THEIR FLAMES TURNED INTO FLESH.webp' },
+        alt: "Their flames turned into flesh.", at: { x: 63.8, y: 25.2 }, clip: 0, voiceAt: 8.3, fallbackAt: 8.3 },
+      { src: '/assets/comic/s3p3/English/ENG_AND THEY WERE AS TALL.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_THEY WERE AS TALL.webp' },
+        alt: "They were as tall as mountains.", at: { x: 83.1, y: 81.1 }, clip: 0, voiceAt: 11.1, fallbackAt: 11.1 },
+      { src: '/assets/comic/s3p3/English/ENG_WITH IT THEY GAIN NEW NAMES.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_WITH IT THEY GAIN NEW NAMES.webp' },
+        alt: "And with it they gained new titles:", at: { x: 9.3, y: 18.3 }, clip: 0, voiceAt: 13.8, fallbackAt: 13.8,
+        replaces: [0, 1, 2] },   // the second page of the artwork starts here: the first page's three boxes clear away
+      { src: '/assets/comic/s3p3/English/ENG_ALDO BECAME APUNG SUKU.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_ALDO BECAME APUNG SUKU.webp' },
+        alt: "Aldo became Apung Suku", at: { x: 88.9, y: 22.1 }, clip: 0, voiceAt: 16.9, fallbackAt: 16.9 },
+      { src: '/assets/comic/s3p3/English/ENG_BULAN BECAME APUNG MALLARI.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_BULAN BECAME APUNG MALLARI.webp' },
+        alt: "Bulan became Apung Mallari", at: { x: 17.7, y: 79.1 }, clip: 0, voiceAt: 20.3, fallbackAt: 20.3 },
+      { src: '/assets/comic/s3p3/English/ENG_FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p3/Pampanga/PAM_FOOTNOTE.webp' },
+        alt: 'Trivia: Kapampangans believed that names were a vital form of protection.', at: { x: 97.5, y: 93.5, edge: 'right' }, clip: 0, voiceAt: 13.8, fallbackAt: 13.8 },
+    ],
+    // One clip (23s), played whole. The page turns about 2.2s after it ends (the video is 25s and holds its last frame).
     narration: [
       { src: '/assets/narration/s3p3/S3-P3-NARRATOR-001.wav' },
     ],
     advanceAfter: 3,
-    videoSeconds: 25,
+    videoSeconds: 25.5,
   },
   {
     id: 'page-11',
@@ -441,6 +484,21 @@ export const pages = [
     alt: 'Season 3, page 4 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
+    // Boxes in the order spoken, each where the voice says it (seconds into the one 16s clip, from its voice stretches; the bamboo
+    // sound is not used for timing): 1.2 "They continued...", 3.5 "From the valleys", 5.3 "Down through the plains", 7.9 "To the beaches",
+    // 9.7 "Their battle unceasing...". Positions follow the layout; the boxes stay.
+    captions: [
+      { src: '/assets/comic/s3p4/English/ENG_THEY CONTINUED THEIR FIGHT.webp', srcByLang: { pam: '/assets/comic/s3p4/Pampanga/PAM_THEY CONTINUED.webp' },
+        alt: "They continued their fight—", at: { x: 10.4, y: 81.8 }, clip: 0, voiceAt: 1.2, fallbackAt: 1.2 },
+      { src: '/assets/comic/s3p4/English/ENG_FROM THE VALLEYS.webp', srcByLang: { pam: '/assets/comic/s3p4/Pampanga/PAM_FROM THE VALLEYS.webp' },
+        alt: "From the valleys…", at: { x: 40.6, y: 27.4 }, clip: 0, voiceAt: 3.5, fallbackAt: 3.5 },
+      { src: '/assets/comic/s3p4/English/ENG_DOWN THROUGH THE PLAINS.webp', srcByLang: { pam: '/assets/comic/s3p4/Pampanga/PAM_DOWN THROUGH THE PLAINS.webp' },
+        alt: "Down through the plains…", at: { x: 66.9, y: 63 }, clip: 0, voiceAt: 5.3, fallbackAt: 5.3 },
+      { src: '/assets/comic/s3p4/English/ENG_TO THE BEACHES.webp', srcByLang: { pam: '/assets/comic/s3p4/Pampanga/PAM_TO THE BEACHES.webp' },
+        alt: "To the beaches…", at: { x: 40.5, y: 87.8 }, clip: 0, voiceAt: 7.9, fallbackAt: 7.9 },
+      { src: '/assets/comic/s3p4/English/ENG_Their battle unceasing, neither willing to back down.webp', srcByLang: { pam: '/assets/comic/s3p4/Pampanga/PAM_Their battle unceasing, neither willing to back down.webp' },
+        alt: "Their battle unceasing, neither willing to back down.", at: { x: 84.3, y: 13.6 }, clip: 0, voiceAt: 9.7, fallbackAt: 9.7 },
+    ],
     // The bamboo knock (~2.2s) repeats 4 times back to back
     sfx: Array.from({ length: 4 }, (_, n) => ({ src: '/assets/audio/sfx/s3p4/Bamboo hitting.mp3', on: 'enter', at: n * 2.2 || undefined })),
     narration: [
@@ -456,6 +514,22 @@ export const pages = [
     ambience: null,
     // seconds from when the page opens: the voice at 0:02, the tremor at 0:06, the stab and scream together at 0:18
     narrationDelay: 2,
+    // Boxes in the order spoken, timed to the voice only (not the sound effects). Voice stretches: first clip (starts 0:02) at 0.8 and 3.6s,
+    // second clip (starts 0:08.5) at 1.2 and 6.2s into it, third clip (starts 0:22.1, trimmed) at 0.4 and 3.7s into it. Positions are the ones drawn into the files (they match the layout). Boxes stay.
+    captions: [
+      { src: '/assets/comic/s3p5/English/1_UNTIL SUDDENLY.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/1 HANGGANG BIGLA.webp' },
+        alt: "Until suddenly…", at: { x: 29.4, y: 3.9 }, clip: 0, voiceAt: 0.8, fallbackAt: 2.8 },
+      { src: '/assets/comic/s3p5/English/2_INDUNG TIBUAN MOVED.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/2 INDUNG TIBUAN MIGLIPAT YA.webp' },
+        alt: "Indung Tibuan moved.", at: { x: 7.7, y: 55.2 }, clip: 0, voiceAt: 3.6, fallbackAt: 5.6 },
+      { src: '/assets/comic/s3p5/English/3_APUNG MALLARI SUDDENLY LOST HER BALANCE AND FELL.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/3 BIGLA YANG MEWALAN TIMBANGAN I APUNG MALLARI AT MIRAGSA YA.webp' },
+        alt: "Apung Mallari suddenly lost her balance and fell.", at: { x: 15.1, y: 90.7 }, clip: 1, voiceAt: 1.2, fallbackAt: 9.7 },
+      { src: '/assets/comic/s3p5/English/4_AND WITHOUT A SECOND THOUGHT APUNG SUKU STRUCK MALLARI IN THE EYE.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/4 AT ALANG KADUANG PAMISIP TIGLUS NENG APUNG SUKU KING MATA I MALLARI.webp' },
+        alt: "And without a second thought, Apung Suku struck Mallari in the eye.", at: { x: 52.8, y: 11.9 }, clip: 1, voiceAt: 6.2, fallbackAt: 14.7 },
+      { src: '/assets/comic/s3p5/English/5_APUNG MALLARI SHRIEKED IN PAIN.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/5 GULISAK YA KING SAKIT I APUNG MALLARI.webp' },
+        alt: "Apung Mallari shrieked in pain.", at: { x: 83.5, y: 17.4 }, clip: 2, voiceAt: 0.4, fallbackAt: 22.5 },
+      { src: '/assets/comic/s3p5/English/6_HER LIGHT BEGAN TO DIM.webp', srcByLang: { pam: '/assets/comic/s3p5/Pampanga/6 ING SULU NA MEGUMPISA YANG MEWALA.webp' },
+        alt: "Her light began to dim.", at: { x: 87.7, y: 28.4 }, clip: 2, voiceAt: 3.7, fallbackAt: 25.9 },
+    ],
     sfx: [
       { src: '/assets/audio/sfx/s3p5/EARTH SHAKING.mp3', on: 'enter', at: 6, volume: 0.35 },
       { src: '/assets/audio/sfx/s3p5/Knife Stab Original Sound Effect.mp3', on: 'enter', at: 18 },
@@ -463,10 +537,13 @@ export const pages = [
     ],
     narration: [
       { src: '/assets/narration/s3p5/S3-P5-PANEL1-3-NARRATOR-001.wav' },
-      { src: '/assets/narration/s3p5/S3-P5-PANEL1-3-NARRATOR-002.wav' },
+      // the second clip's voice ends at ~12.9s of its 15.6s: it is cut at 13.6s (a soft fade) so the last clip follows sooner
+      { src: '/assets/narration/s3p5/S3-P5-PANEL1-3-NARRATOR-002.wav', maxSeconds: 13.6 },
+      // the last clip skips its first 0.2s of quiet and ends after its last word (voice 0.6-2.9s and 3.9-5.7s of the 7.6s file)
+      { src: '/assets/narration/s3p5/S3-P6-PANEL1-4-NARRATOR-001.wav', startSeconds: 0.2, maxSeconds: 6.3 },
     ],
-    advanceAfter: 1.5,
-    videoSeconds: 25,   // the page turns as the whole 25s video ends
+    // The narration now ends at about 0:28.2 (the video is 25s and holds its last frame); the page turns 2.5s after it ends
+    advanceAfter: 2.5,
   },
   {
     id: 'page-13',
@@ -476,10 +553,14 @@ export const pages = [
     ambience: null,
     videoSound: true,   // this video's own audio plays...
     videoSoundFrom: 10, // ...but only from 0:10 of the video
+    narrationDelay: 7.6,
     sfx: [{ src: '/assets/audio/sfx/s3p6/Wind Blowing Through Grass Sound Effect.mp3', on: 'enter', volume: 0.5 }],
     narration: [
-      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-001.wav' },
-      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-002.wav', maxSeconds: 4 },   // cut off at 0:04
+      // The file's voice has two stretches (1.5-3.2s "he reaches his hand" and 4.3-5.5s "Mallari looks up"). In the video the hand
+      // starts to reach in at ~0:07.8 and the panel with "Rise, let us cease..." comes in at ~0:11.9. The narration waits (narrationDelay 7.6s,
+      // 1.2s of the file's leading quiet skipped) so the first stretch begins at 0:07.9 with the hand; the second stays at 0:09.9.
+      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-002.wav', startSeconds: 1.2, maxSeconds: 3.4 },
+      { src: '/assets/narration/s3p6/S3-P6-PANEL1-4-NARRATOR-002.wav', startSeconds: 4.2, maxSeconds: 5.8 },
     ],
     advanceAfter: 1.5,
     videoSeconds: 25,   // the page turns as the whole 25s video ends, not when the voice does
@@ -490,6 +571,19 @@ export const pages = [
     alt: 'Season 3, page 7 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
+    // Boxes in the order spoken, each at its voice (seconds into the clip, from the voice stretches of the narration only):
+    // clip 1 (cut at 0:19): 1.3 "From that day on...", 6.5 "Thus, they earned new names..."; clip 2 (starts at 0:19): 0.8 "...and Apung Mallari became Apung Punsalang";
+    // the footnote comes in with that last box. Positions are the ones drawn into the files (they match the layout). Boxes stay.
+    captions: [
+      { src: '/assets/comic/s3p7/English/1 FROM THAT DAY ON THE TWO GODS AGREED TO DIVIDE THE HEAVENS.webp', srcByLang: { pam: '/assets/comic/s3p7/Pampanga/1 MANIBAT KING ALDONG ITA.webp' },
+        alt: "From that day on, the two gods agreed to divide the heavens…", at: { x: 9.2, y: 13.9 }, clip: 0, voiceAt: 1.3, fallbackAt: 1.5 },
+      { src: '/assets/comic/s3p7/English/2 THUS THEY EARNED NEW NAMES.webp', srcByLang: { pam: '/assets/comic/s3p7/Pampanga/2 MAKANYAN MIKA BAYUNG LAGYA LA.webp' },
+        alt: "Thus, they earned new names: As the victor, Apung Suku became Apung Sinukuan, ruler of the day when the sun shines bright…", at: { x: 23.9, y: 30 }, clip: 0, voiceAt: 6.5, fallbackAt: 6.7 },
+      { src: '/assets/comic/s3p7/English/3 AND APUNG MALLARI BECAME APUNG PUNSALANG.webp', srcByLang: { pam: '/assets/comic/s3p7/Pampanga/3 AT APUNG MALLARI MEGING YANG APUNG PUNSALANG.webp' },
+        alt: "…and Apung Mallari became Apung Punsalang, ruler of the night when the moon illuminates the darkness.", at: { x: 78.4, y: 55.8 }, clip: 1, voiceAt: 0.8, fallbackAt: 19.8 },
+      { src: '/assets/comic/s3p7/English/FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p7/Pampanga/FOOTNOTE.webp' },
+        alt: 'Footnote: this celestial pact marked the origin of day and night in Kapampangan mythology. From this division, Panaun (Time) was born.', at: { x: 72.7, y: 85 }, clip: 1, voiceAt: 0.8, fallbackAt: 19.8 },
+    ],
     // night until 0:20 (fades out), then dawn fades in
     sfx: [
       { src: '/assets/audio/sfx/s3p7/Night _ Midnight Sound Effect.mp3', on: 'enter', stopAt: 20, fadeMs: 1500 },
@@ -508,6 +602,20 @@ export const pages = [
     alt: 'Season 3, page 8 — motion graphic.',
     music:    '/assets/audio/music/theme-mystery.mp3',
     ambience: null,
+    // The Eagle Cry plays as the bird shows up (a first guess at 0:00.5). Boxes in the order spoken, each at its voice (seconds into the one 21s clip,
+    // from its voice stretches): 0.9 "Apung Sinukuan dwelled..." (the long first sentence runs to ~13.4), 14.5 "Meanwhile, Apung Punsalang..." (the last 5 stretches, to ~19.8), the trivia footnote and "THE END" / "DULU" fade up together with the first box (0.9s). Positions are the ones drawn into the files. The boxes stay.
+    sfx: [{ src: '/assets/audio/sfx/s3p8/Cinematic Eagle Cry Sound Effect.mp3', on: 'enter', at: 0.5, volume: 0.8 }],
+    captions: [
+      { src: '/assets/comic/s3p8/English/ENG_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION BOX.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_APUNG SINUKUAN DWELLED UPON_S3P8 CAPTION.webp' },
+        alt: "Apung Sinukuan dwelled upon Mount Alaya, the highest and most solitary peak rising from a sea of primordial flames—a place fit for a victor.", at: { x: 50, y: 50.8 }, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
+      { src: '/assets/comic/s3p8/English/ENG_Meanwhile, Apung Punsalang retreated to Mount Pinatubo.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_Samantalang i Apung Punsalang minatras ya king Bunduk Pinatubu.webp' },
+        alt: "Meanwhile, Apung Punsalang retreated to Mount Pinatubo.", at: { x: 85.7, y: 54.1 }, clip: 0, voiceAt: 14.5, fallbackAt: 14.5,
+        replaces: [0] },
+      { src: '/assets/comic/s3p8/English/ENG_FOOTNOTE.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/PAM_FOOTNOTE.webp' },
+        alt: "Trivia: at its heart stood Batung Maputi, the great white rock that served as Apung Sinukuan’s throne and the gateway to the upper world.", at: { x: 23.5, y: 88.9 }, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
+      { src: '/assets/comic/s3p8/English/THE END.webp', srcByLang: { pam: '/assets/comic/s3p8/Pampanga/DULU.webp' },
+        alt: 'The end', at: { x: 95, y: 95.3 }, clip: 0, voiceAt: 0.9, fallbackAt: 0.9 },
+    ],
     narration: [
       { src: '/assets/narration/s3p8/S3-P8-NARRATOR-001.wav' },
     ],

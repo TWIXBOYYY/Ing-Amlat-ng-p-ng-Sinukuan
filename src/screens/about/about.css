@@ -3,15 +3,27 @@
   /* display: flex applied by global.css when .active is present */
   align-items: center;
   justify-content: center;
-  padding: clamp(60px, 6vw, 80px) clamp(100px, 10vw, 180px);
-  gap: clamp(40px, 6vw, 100px);
   overflow: hidden;
+}
+
+/* Laid out once at 1280x720, then scaled to the screen (--k, set in main.js): identical on phones, iPads, laptops and TVs */
+.about-stage {
+  zoom: var(--k, 1);
+  flex: none;
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  padding: 60px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
 }
 
 /* ── Left — image ── */
 .about-image-wrap {
   flex-shrink: 0;
-  height: min(68vh, 46vw);      /* the team photo is portrait (3:4) */
+  height: 480px;                /* the team photo is portrait (3:4) */
   aspect-ratio: 3 / 4;
 }
 
@@ -24,9 +36,7 @@
   display: none;
 }
 
-.about-image.loaded {
-  display: block;
-}
+.about-image.loaded { display: block; }
 
 /* ── Right — text block ── */
 .about-text {
@@ -34,12 +44,12 @@
   max-width: 680px;
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 2vmin, 20px);
+  gap: 16px;
   align-items: center;   /* logo centred above the paragraph */
 }
 
 .about-logo {
-  width: clamp(240px, 34vw, 520px);
+  width: 400px;
   align-self: center;
   height: auto;
   display: block;
@@ -49,7 +59,7 @@
 .about-body {
   align-self: stretch;
   font-family: var(--font-mclaren);
-  font-size: var(--fs-body);
+  font-size: 17px;
   line-height: 1.45;
   letter-spacing: -0.005em;
   word-spacing: -0.03em;
@@ -57,40 +67,4 @@
   text-align: justify;
 }
 
-.about-body strong {
-  font-weight: 700;
-}
-
-/* ── Portrait / narrow viewport ── */
-@media (orientation: portrait), (max-width: 700px) {
-  .screen-about {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    /* top: clear the absolute-positioned back button (bottom edge ≈ 70px on phones) */
-    padding: clamp(80px, 14vmin, 110px) clamp(20px, 5vw, 60px) clamp(24px, 4vmin, 48px);
-    gap: clamp(16px, 3vmin, 32px);
-    overflow-y: auto;
-  }
-
-  .about-body {
-    text-align: left;
-  }
-
-  .about-logo {
-    width: clamp(180px, 62vw, 360px);
-  }
-
-  .about-image-wrap {
-    width: min(100%, 420px);
-    height: auto;
-    align-self: center;
-  }
-
-  .about-image {
-    height: auto;
-    object-fit: cover;
-    max-height: none;
-  }
-}
-
+.about-body strong { font-weight: 700; }

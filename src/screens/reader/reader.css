@@ -34,7 +34,7 @@
   inset: -6%;
   width: 112%;
   height: 112%;
-  filter: blur(28px) saturate(1.15) brightness(0.8);
+  opacity: 0.85;   /* the tiny frame scaled up is already soft; no heavy blur filter to repaint */
   pointer-events: none;
 }
 
@@ -363,11 +363,13 @@ span.reader-hud-btn-img img {
   top: 45%;
   bottom: 38%;
   left: 7%;
-  width: calc(var(--progress, 0%) * 0.85);
-  max-width: 85%;
+  width: 85%;
+  transform-origin: left center;
+  transform: scaleX(var(--p, 0));   /* animated on the compositor: stays smooth while a page loads or turns */
+  will-change: transform;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 2px;
-  transition: width 0.4s ease;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
   pointer-events: none;
   z-index: 1;
 }

@@ -7,11 +7,11 @@ const ART = '/assets/characters ui';
 // image = the character's primary piece; alt describes the picture without naming it.
 // tabletImage (optional) = a closer piece used on tablet portrait, where the card art is small
 const GAME_CHARS = [
-  { id: 'apung-punsalan', name: 'Apung Punsalan', image: `${ART}/Bulan/Punsalan.webp`,                      w: 2009, h: 2314, alt: 'Illustration of a red fiery phoenix with spread wings' },
+  { id: 'apung-punsalan', name: 'Apung Punsalan', image: `${ART}/Bulan/mg-punsalan.webp`,                   w: 900, h: 549, fill: true, alt: 'Illustration of a red fiery phoenix with spread wings' },
   { id: 'indung-tibuan',  name: 'Indung Tibuan',  image: `${ART}/Indung Tibuan/Indung Tibuan Whole.png`,       w: 1436, h: 571,  alt: 'Illustration of a giant crocodile' },
   { id: 'apung-batala',   name: 'Apung Batala',   image: `${ART}/Apung Batala/Batala.png`,                     w: 675,  h: 756,  alt: 'Illustration of a blue-feathered kingfisher' },
-  { id: 'apung-mangacha', name: 'Apung Mangacha', image: `${ART}/Apung Mangacha/Manggacha.webp`,              w: 4200, h: 2548, alt: 'Illustration of a giant black spider seen from the front' },
-  { id: 'apung-sinukuan', name: 'Apung Sinukuan', image: `${ART}/Apung Sinukuan/Suku.webp`,                    w: 2103, h: 2314, alt: 'Illustration of a white fiery phoenix with spread wings' },
+  { id: 'apung-mangacha', name: 'Apung Mangacha', image: `${ART}/Apung Mangacha/mg-manggacha.webp`,           w: 900, h: 546, fill: true, alt: 'Illustration of a giant black spider seen from the front' },
+  { id: 'apung-sinukuan', name: 'Apung Sinukuan', image: `${ART}/Apung Sinukuan/mg-suku.webp`,                 w: 900, h: 549, fill: true, alt: 'Illustration of a white fiery phoenix with spread wings' },
 ];
 
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
@@ -78,7 +78,7 @@ function buildGame(el) {
             <div class="mg-img-slot">
               <picture>
                 ${c.tabletImage ? `<source media="${TABLET_PORTRAIT}" srcset="${encodeURI(c.tabletImage)}">` : ''}
-                <img src="${c.image}" alt="${c.alt}" width="${c.w}" height="${c.h}" draggable="false" decoding="async"${c.tabletImage ? ' class="mg-img--head"' : ''}/>
+                <img src="${c.image}" alt="${c.alt}" width="${c.w}" height="${c.h}" draggable="false" decoding="async"${c.tabletImage ? ' class="mg-img--head"' : c.fill ? ' class="mg-img--fill"' : ''}/>
               </picture>
             </div>
             <button type="button" class="mg-drop-zone" data-answer="${c.id}" aria-label="Answer slot ${i + 1} of ${GAME_CHARS.length}"></button>

@@ -42,7 +42,8 @@ export function buildLoadingScreen({ bg, className, screen, foreword = false }) 
 export function createLoadingScreen() {
   const el = buildLoadingScreen({ bg: DAY_BG, className: '', screen: '#loading', foreword: true });
   // The home screen's layers load while the loading screen plays
-  ['bg', 'clouds', 'ayala', 'ground'].forEach(n => preloadImage(`/assets/ui/layer-${n}.webp`));
+  // (Continue only appears once they have arrived, or after 10s, so the menu never opens half-drawn)
+  el._homeReady = Promise.all(['bg', 'clouds', 'ayala', 'ground'].map(n => preloadImage(`/assets/ui/layer-${n}.webp`)));
   return el;
 }
 
@@ -113,8 +114,9 @@ function finish(el, onDone, fadeOut, waitForClick = false) {
     gsap.to(el, { opacity: 0, duration: 0.75, ease: 'power2.inOut', onComplete: onDone });
   };
 
-  el._finishTimer = setTimeout(() => {
+  el._finishTimer = setTimeout(async () => {
     if (!waitForClick) { leave(); return; }
+    await Promise.race([el._homeReady || Promise.resolve(), new Promise(r => setTimeout(r, 10000))]);
     const label = el.querySelector('.loading-label');
     const orb   = el.querySelector('.loading-orb-wrap');
     const btn   = el.querySelector('.loading-continue');   // the foreword screen has a Continue button

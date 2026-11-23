@@ -287,12 +287,12 @@
   }
 
   .char-name {
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     margin-bottom: clamp(6px, 1cqw, 14px);
   }
 
   .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.35;
     letter-spacing: -0.005em;
   }
@@ -367,7 +367,7 @@
   }
 
   [data-layout="text-right"] .char-name {
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     white-space: nowrap;
     line-height: 1;
     margin-bottom: 0.68cqw;
@@ -407,14 +407,14 @@
   }
 
   [data-layout="indung"] .char-name {
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     white-space: nowrap;
     line-height: 1;
     margin-bottom: 1.07cqw;
   }
 
   [data-layout="indung"] .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.15;
     width: 25cqw;
   }
@@ -443,12 +443,12 @@
   [data-layout="batala"] .char-name {
     white-space: nowrap;
     line-height: 1;
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     margin-bottom: 0.84cqw;
   }
 
   [data-layout="batala"] .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.15;
     width: 25cqw;
   }
@@ -471,12 +471,12 @@
   [data-layout="mangacha"] .char-name {
     white-space: nowrap;
     line-height: 1;
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     margin-bottom: 0.84cqw;
   }
 
   [data-layout="mangacha"] .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.15;
     width: 36cqw;
   }
@@ -519,12 +519,12 @@
   [data-layout="sinukuan"] .char-name {
     white-space: nowrap;
     line-height: 1;
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     margin-bottom: 0.84cqw;
   }
 
   [data-layout="sinukuan"] .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.15;
     width: 23cqw;
   }
@@ -570,13 +570,13 @@
   [data-layout="phoenix-right"] .char-name {
     white-space: nowrap;
     line-height: 1;
-    font-size: clamp(2.4rem, 5.2cqw, 6.2rem);
+    font-size: clamp(1.5rem, 5.2cqw, 6.2rem);
     margin-bottom: 0.6cqw;
   }
 
   [data-layout="phoenix-left"] .char-description,
   [data-layout="phoenix-right"] .char-description {
-    font-size: clamp(1.05rem, 1.6cqw, 2rem);
+    font-size: clamp(0.72rem, 1.6cqw, 2rem);
     line-height: 1.15;
     width: 32cqw;
   }

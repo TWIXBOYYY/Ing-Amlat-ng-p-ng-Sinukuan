@@ -3,28 +3,40 @@
   --color-credits-brown: #4a2a12;   /* dark brown on the parchment */
   background: url('/assets/ui/BACKGROUND.png') center/cover no-repeat var(--color-parchment);
   /* display: flex applied by global.css when .active is present */
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(48px, 6vmin, 80px) clamp(20px, 8vw, 160px);
   overflow: hidden;
+}
+
+/* Laid out once at 1280x720, then scaled to the screen (--k, set in main.js) */
+.credits-stage {
+  zoom: var(--k, 1);
+  flex: none;
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  padding: 52px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .credits-title {
   text-shadow: var(--credits-shadow);
   font-family: var(--font-tribal);
-  font-size: clamp(2rem, 7vmin, 5rem);
+  font-size: 50px;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--color-credits-brown);
-  margin-bottom: clamp(12px, 2.5vmin, 36px);
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .credits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(14px, 2.5vmin, 28px) clamp(24px, 4vw, 64px);
+  gap: 20px 56px;
   width: 100%;
   max-width: 1300px;
   /* opacity set by GSAP in mountCredits — do NOT set 0 here */
@@ -33,12 +45,12 @@
 .credits-section-title {
   text-shadow: var(--credits-shadow);
   font-family: var(--font-tribal);
-  font-size: clamp(1.1rem, 4.2vmin, 3rem);
+  font-size: 30px;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #8a5a1c;
   text-transform: uppercase;
-  margin-bottom: clamp(4px, 1vmin, 10px);
+  margin-bottom: 7px;
   border-bottom: 1px solid rgba(110,70,25,0.45);
   padding-bottom: 6px;
 }
@@ -47,7 +59,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: clamp(2px, 0.6vmin, 5px);
+  gap: 4px;
 }
 
 .credits-entry {
@@ -58,7 +70,7 @@
 .credits-name {
   text-shadow: var(--credits-shadow);
   font-family: var(--font-tribal);
-  font-size: clamp(1rem, 3.2vmin, 2.2rem);
+  font-size: 23px;
   font-weight: 600;
   color: var(--color-credits-brown);
   letter-spacing: 0;
@@ -67,7 +79,7 @@
 .credits-role {
   text-shadow: var(--credits-shadow);
   font-family: var(--font-mclaren);
-  font-size: clamp(0.75rem, 2.2vmin, 1.5rem);
+  font-size: 16px;
   color: #6b4a2b;
   margin-top: 0;
   line-height: 1.25;
@@ -80,26 +92,28 @@
   right: 0;
   bottom: 7%;
   font-family: var(--font-tribal);
-  font-size: clamp(1.1rem, 3.6vmin, 2.6rem);
+  font-size: 26px;
   color: var(--color-credits-brown);
   letter-spacing: 0.04em;
   text-align: center;
   opacity: 0;
 }
 
-/* ── Portrait / narrow viewport ── */
-@media (orientation: portrait), (max-width: 700px) {
-  .credits-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .screen-credits {
-    justify-content: flex-start;
-    overflow-y: auto;
-    /* clear the absolute-positioned back button (bottom edge ≈ 70px on phones) */
-    padding-top: clamp(80px, 14vmin, 110px);
-    padding-left: clamp(16px, 5vw, 60px);
-    padding-right: clamp(16px, 5vw, 60px);
+/* ── Desktops and laptops: the original fluid layout (sizes follow the window), not the scaled 1280x720 stage ── */
+@media (min-height: 561px) and (pointer: fine) {
+  .credits-stage {
+    zoom: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: clamp(48px, 6vmin, 80px) clamp(20px, 8vw, 160px);
   }
+  .credits-title { font-size: clamp(2rem, 7vmin, 5rem); margin-bottom: clamp(12px, 2.5vmin, 36px); }
+  .credits-grid { gap: clamp(14px, 2.5vmin, 28px) clamp(24px, 4vw, 64px); }
+  .credits-section-title { font-size: clamp(1.1rem, 4.2vmin, 3rem); margin-bottom: clamp(4px, 1vmin, 10px); }
+  .credits-list { gap: clamp(2px, 0.6vmin, 5px); }
+  .credits-name { font-size: clamp(1rem, 3.2vmin, 2.2rem); }
+  .credits-role { font-size: clamp(0.75rem, 2.2vmin, 1.5rem); }
+  .credits-footer { font-size: clamp(1.1rem, 3.6vmin, 2.6rem); }
 }
-
