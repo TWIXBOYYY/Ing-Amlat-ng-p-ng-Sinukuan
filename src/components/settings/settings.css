@@ -312,3 +312,16 @@
   .settings-panel { --toolbar-h: 0px; --pw: min(21rem, calc(100vw - 32px)); max-height: calc(100dvh - 16px); }
   .settings-row { min-height: 24px; }
 }
+
+/* ── iPhones in landscape: the label may wrap, the slider keeps most of the row, and the knob is smaller (it was swallowing the track) ── */
+@media (max-height: 520px) {
+  .settings-row {
+    grid-template-columns: minmax(0, 30%) minmax(0, 1fr) 3.6ch 30px;
+    column-gap: 6px;
+  }
+  .settings-row-label { white-space: normal; line-height: 1.05; min-width: 0; }
+  .settings-slider-wrap { --thumb-w: 16px; --track-h: 3px; height: 30px; }
+  .settings-slider { height: 30px; }
+  .settings-slider::-webkit-slider-thumb { height: 26px; margin-top: calc((var(--track-h) - 26px) / 2); }
+  .settings-slider::-moz-range-thumb { height: 26px; }
+}

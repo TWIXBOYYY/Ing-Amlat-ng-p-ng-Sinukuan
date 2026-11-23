@@ -89,6 +89,12 @@ export function createHomeScreen() {
       </span>
     </button>
 
+    <!-- QR code for the website, bottom right -->
+    <a class="home-qr" href="https://ing-amlat-ng-p-ng-s-nukuan.vercel.app/" target="_blank" rel="noopener" aria-label="Scan to open the website: ing-amlat-ng-p-ng-s-nukuan.vercel.app">
+      <img src="/assets/ui/qr-site.svg" alt="" draggable="false"/>
+      <span>Scan to open</span>
+    </a>
+
     <!-- Continue reading (hidden until saved progress exists) -->
     <button class="home-continue-btn" aria-label="Continue reading">Continue</button>
   `;

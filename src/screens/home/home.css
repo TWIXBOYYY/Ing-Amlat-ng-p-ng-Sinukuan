@@ -228,3 +228,34 @@ span.home-settings-btn-img img {
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 1)) drop-shadow(0 0 7px rgba(255, 214, 90, 1)) drop-shadow(0 0 14px rgba(232, 180, 40, 0.9));
   will-change: transform, opacity;
 }
+
+/* ── QR code, bottom right: sized from the screen height like the rest of the menu ── */
+.home-qr {
+  position: absolute;
+  right: max(clamp(12px, 2.2vw, 36px), env(safe-area-inset-right));
+  bottom: max(clamp(10px, 2.4vh, 28px), env(safe-area-inset-bottom));
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5vh;
+  padding: clamp(4px, 0.8vh, 8px);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(20, 40, 30, 0.4);
+  text-decoration: none;
+}
+
+.home-qr img {
+  display: block;
+  width: clamp(56px, 13vh, 120px);
+  height: clamp(56px, 13vh, 120px);
+}
+
+.home-qr span {
+  font-family: var(--font-mclaren);
+  font-size: clamp(8px, 1.5vh, 13px);
+  color: #2a3a2f;
+  line-height: 1;
+  white-space: nowrap;
+}
