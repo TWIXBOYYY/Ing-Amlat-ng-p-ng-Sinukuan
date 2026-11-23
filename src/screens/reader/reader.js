@@ -203,7 +203,7 @@ function startAmbient() {
 
 /** ?debug in the address shows what the current page's video is doing (for phones that will not play it). */
 function startVideoDebug() {
-  if (!/[?&]debug/.test(location.search) || document.getElementById('video-debug')) return;
+  if (!/debug/.test(location.href) || document.getElementById('video-debug')) return;
   const box = document.createElement('pre');
   box.id = 'video-debug';
   box.style.cssText = 'position:fixed;left:6px;bottom:6px;z-index:99999;margin:0;padding:6px 8px;max-width:70vw;background:rgba(0,0,0,0.78);color:#7CFC00;font:11px/1.25 monospace;white-space:pre-wrap;pointer-events:none';
@@ -434,9 +434,17 @@ function syncVideos(idx) {
 function watchStart(idx, v) {
   const pe = pageEls[idx];
   clearTimeout(pe._startCheck);
+  // a video can report "playing" while nothing is drawn (seen on one iPhone): count real frames, not the clock
+  if (v.requestVideoFrameCallback && !v._frameWatch) {
+    v._frameWatch = true;
+    const onFrame = () => { v._framed = true; };
+    v.requestVideoFrameCallback(onFrame);
+    v.addEventListener('emptied', () => { v._framed = false; v._frameWatch = false; });
+  }
   pe._startCheck = setTimeout(() => {
     if (idx !== videoTarget) return;
-    const moving = !v.paused && v.currentTime > 0.05;
+    const drawing = v.requestVideoFrameCallback ? !!v._framed : true;
+    const moving = !v.paused && v.currentTime > 0.05 && drawing;
     let btn = pe.querySelector('.reader-tap-play');
     if (moving) { btn?.remove(); return; }
     if (!btn) {
@@ -445,14 +453,22 @@ function watchStart(idx, v) {
       btn.className = 'reader-tap-play';
       btn.setAttribute('aria-label', 'Play the picture');
       btn.textContent = '▶';
+      const note = document.createElement('span');
+      note.className = 'reader-tap-note';
+      btn.appendChild(note);
       btn.addEventListener('click', e => {
         e.stopPropagation();
         v.muted = !pages[idx].videoSound;
         if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src;
-        v.play().then(() => btn.remove()).catch(() => { v.load(); v.play().catch(() => {}); });
+        v._framed = false;
+        const go = () => v.play().then(() => setTimeout(() => { if (v._framed || !v.requestVideoFrameCallback) btn.remove(); }, 800)).catch(() => {});
+        if (v.readyState === 0 || v.error) { v.load(); v.addEventListener('loadeddata', go, { once: true }); } else go();
+        if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(() => { v._framed = true; });
       });
       pe.appendChild(btn);
     }
+    const note = btn.querySelector('.reader-tap-note');
+    if (note) note.textContent = 'ready ' + v.readyState + ' · ' + (v.paused ? 'paused' : 'playing') + ' · ' + v.videoWidth + 'x' + v.videoHeight + (v.error ? ' · err ' + v.error.code : '');
     // keep checking: once it moves, the button goes away
     pe._startCheck = setTimeout(() => watchStart(idx, v), 1500);
   }, 1500);
