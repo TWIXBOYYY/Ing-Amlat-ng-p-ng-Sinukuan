@@ -117,3 +117,10 @@
   .credits-role { font-size: clamp(0.75rem, 2.2vmin, 1.5rem); }
   .credits-footer { font-size: clamp(1.1rem, 3.6vmin, 2.6rem); }
 }
+
+/* Phones and iPads: the footer sits under the list (not pinned to the bottom, where it ran into the Audio line), and Audio spans both columns so its role stays on one line */
+@media (max-height: 560px), (pointer: coarse) {
+  .credits-stage .credits-footer { position: static; margin-top: 16px; }
+  .credits-stage .credits-block:last-of-type { grid-column: 1 / -1; }
+  .credits-stage { justify-content: flex-start; padding-top: 44px; }
+}
