@@ -10,9 +10,8 @@ html, body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   min-height: 100vh;
-  min-height: 100lvh;
   overflow: hidden;
   background: #000;
   font-family: var(--font-body);
@@ -38,8 +37,7 @@ button {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100vh;
-  height: 100lvh;     /* the large viewport: on an iPhone opened from the Home Screen the usual height leaves a black strip */   /* inset: 0 already spans the whole screen, including the area behind the iPhone home bar when opened from the Home Screen */
+  bottom: 0;
   overflow: hidden;
 }
 
@@ -197,3 +195,9 @@ button {
 }
 
 .screen-back-icon { width: 40%; height: 40%; object-fit: contain; display: block; pointer-events: none; }
+
+/* Opened from the iPhone Home Screen (no browser bars): fill the large viewport so no black strip shows at the bottom */
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  html, body { min-height: 100lvh; }
+  #stage { bottom: auto; height: 100lvh; }
+}
