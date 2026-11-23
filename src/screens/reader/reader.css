@@ -514,14 +514,13 @@ span.reader-hud-btn-img img {
     --nb: clamp(76px, 20vh, 120px);
     width: var(--nb);
     height: var(--nb);
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 40%, rgba(78, 52, 14, 0.82), rgba(40, 26, 6, 0.82));
-    border: 3px solid #e8c84a;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55), inset 0 0 12px rgba(232, 200, 74, 0.25);
+    background: none;
+    border: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.45));
     display: grid;
     place-items: center;
   }
-  .reader-nav-btn .nav-arrow-img { width: 62%; height: 62%; }
+  .reader-nav-btn .nav-arrow-img { width: 100%; height: 100%; }
   .reader-nav-btn:disabled { opacity: 0.3; }
   .reader-nav-prev { left: max(10px, env(safe-area-inset-left)); }
   .reader-nav-next { right: max(10px, env(safe-area-inset-right)); }
