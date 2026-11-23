@@ -259,3 +259,15 @@ span.home-settings-btn-img img {
   line-height: 1;
   white-space: nowrap;
 }
+
+/* ── Very short landscape screens (iPhone with Safari's bars showing, ~230-340px tall): smaller title, tagline and QR so nothing overlaps the menu row ── */
+@media (orientation: landscape) and (max-height: 340px) {
+  .home-title-block { top: 1.5vh; }
+  .home-title-img { height: 34vh; }
+  .home-tagline { font-size: 4vh; margin-top: 0.2vh; }
+  .home-menu { bottom: calc(3vh + env(safe-area-inset-bottom)); }
+  .home-menu-btn { font-size: clamp(0.9rem, 7vh, 1.3rem); min-height: 36px; }
+  .home-qr { padding: 3px; border-radius: 7px; right: max(8px, env(safe-area-inset-right)); bottom: max(6px, env(safe-area-inset-bottom)); }
+  .home-qr img { width: clamp(40px, 22vh, 64px); height: clamp(40px, 22vh, 64px); }
+  .home-qr span { display: none; }
+}

@@ -201,32 +201,8 @@ function startAmbient() {
   ambientTimer = setInterval(draw, 400);
 }
 
-/** ?debug in the address shows what the current page's video is doing (for phones that will not play it). */
-function startVideoDebug() {
-  if (!/debug/.test(location.href) || document.getElementById('video-debug')) return;
-  const box = document.createElement('pre');
-  box.id = 'video-debug';
-  box.style.cssText = 'position:fixed;left:6px;bottom:6px;z-index:99999;margin:0;padding:6px 8px;max-width:70vw;background:rgba(0,0,0,0.78);color:#7CFC00;font:11px/1.25 monospace;white-space:pre-wrap;pointer-events:none';
-  document.body.appendChild(box);
-  const t = document.createElement('video');
-  const can = ['video/mp4; codecs="avc1.4D0032"', 'video/mp4; codecs="avc1.4D0028"', 'video/mp4'].map(x => t.canPlayType(x) || 'no').join('/');
-  setInterval(() => {
-    const v = pageEls[currentIndex]?.querySelector('video');
-    if (!v) { box.textContent = 'page ' + currentIndex + ': no video'; return; }
-    box.textContent = [
-      'page ' + currentIndex + ' src=' + (v.getAttribute('src') ? 'yes' : 'NO'),
-      'ready=' + v.readyState + ' net=' + v.networkState + ' paused=' + v.paused,
-      'time=' + v.currentTime.toFixed(1) + ' / ' + (v.duration || 0).toFixed(1),
-      'size=' + v.videoWidth + 'x' + v.videoHeight + ' muted=' + v.muted,
-      'error=' + (v.error ? v.error.code + ' ' + (v.error.message || '') : 'none'),
-      'canPlay=' + can + '  ios=' + (navigator.userAgent.match(/OS ([0-9_]+)/) || [])[1],
-    ].join('\n');
-  }, 500);
-}
-
 export function mountReader(el) {
   readerEl = el;
-  startVideoDebug();
   startAmbient();
   const stage    = el.querySelector('.reader-stage');
   const hudTop   = el.querySelector('#reader-hud-top');
@@ -453,9 +429,6 @@ function watchStart(idx, v) {
       btn.className = 'reader-tap-play';
       btn.setAttribute('aria-label', 'Play the picture');
       btn.textContent = '▶';
-      const note = document.createElement('span');
-      note.className = 'reader-tap-note';
-      btn.appendChild(note);
       btn.addEventListener('click', e => {
         e.stopPropagation();
         v.muted = !pages[idx].videoSound;
@@ -467,8 +440,6 @@ function watchStart(idx, v) {
       });
       pe.appendChild(btn);
     }
-    const note = btn.querySelector('.reader-tap-note');
-    if (note) note.textContent = 'ready ' + v.readyState + ' · ' + (v.paused ? 'paused' : 'playing') + ' · ' + v.videoWidth + 'x' + v.videoHeight + (v.error ? ' · err ' + v.error.code : '');
     // keep checking: once it moves, the button goes away
     pe._startCheck = setTimeout(() => watchStart(idx, v), 1500);
   }, 1500);
