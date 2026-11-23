@@ -426,7 +426,7 @@ function syncVideos(idx) {
     v.pause();
     if (i !== idx) return;
     v.currentTime = 0;
-    if (!reduced && !pages[i].narration) playPageVideo(i);
+    if (!pages[i].narration) playPageVideo(i);
   });
 }
 
@@ -477,7 +477,8 @@ function watchStart(idx, v) {
 function playPageVideo(idx) {
   const v = pageEls[idx]?.querySelector('video');
   if (!v || idx !== videoTarget) return;   // the reader has moved on
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Reduce Motion is on (a common iPhone setting): do not start the animation by itself, but offer a Play button so the story is still reachable
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { watchStart(idx, v); return; }
   // videoSoundFrom: the video's own audio stays off until it reaches that many seconds
   const from = pages[idx].videoSoundFrom;
   if (from != null && !v._soundGate) {
